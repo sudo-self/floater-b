@@ -1,16 +1,16 @@
-// script-utils.js
+
 import { ref, uploadString, getDownloadURL } from 'firebase/storage';
-import { getCurrentUser } from './firebase'; // Import the function to get the current user
+import { getCurrentUser } from './firebase';
 import { storage } from './firebase';
 
-// Generate a unique filename for the script
+
 const generateUniqueFilename = () => {
   const timestamp = Date.now();
   const randomString = Math.random().toString(36).substring(2, 12);
   return `${timestamp}-${randomString}.js`;
 };
 
-// Generate the script content
+
 export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) => {
   const uniqueId = `btn-${Math.random().toString(36).substring(2, 9)}`;
 
