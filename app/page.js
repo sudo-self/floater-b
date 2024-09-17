@@ -27,7 +27,7 @@ const Home = () => {
     setDarkMode(!darkMode);
   };
 
-  const slides = ['Floater', 'Buttons'];
+  const slides = ['embedabble', 'Floater', 'Buttons'];
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -61,7 +61,6 @@ const Home = () => {
         <BigText slides={slides} />
         <Dashboard />
 
-        {/* Centered Button Below Dashboard */}
         <div className="flex justify-center mt-8">
           <button
             onClick={() => setShape(shape === "circle" ? "square" : "circle")}
@@ -76,7 +75,7 @@ const Home = () => {
               alignItems: "center",
               justifyContent: "center",
             }}
-            title={`Floater B. ${shape === "circle" ? "Square" : "Circle"}`}
+            title={`git push origin ${shape === "circle" ? "square" : "circle"}`}
           >
             <span
               className="absolute inset-0"

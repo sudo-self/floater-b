@@ -16,7 +16,7 @@ export default function Footer() {
         </a>
       </p>
       <a
-        href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsudo-self%2Ffloater-xyz"
+        href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsudo-self%2Ffloater-b"
         target="_blank"
         rel="noopener noreferrer"
       >
