@@ -159,7 +159,7 @@ const Home = () => {
                   alt="Copy icon"
                   className="w-8 h-8 mb-1 cursor-pointer"
                 />
-                <span>{copied ? 'Copied!' : 'Copy script tag'}</span>
+                <span>{copied ? 'embed script is ready!' : 'copy floater button'}</span>
               </div>
             )}
           </div>
