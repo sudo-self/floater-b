@@ -153,7 +153,7 @@ const Home = () => {
               <div className="mt-4 flex flex-col items-center">
                 <img
                   onClick={() => {
-                    copyToClipboard(`<script src="${scriptUrl}"></script>`);
+                    copyToClipboard(`${scriptUrl}`);
                   }}
                   src="https://api.iconify.design/ic:outline-copy-all.svg?color=%23929292"
                   alt="Copy icon"
