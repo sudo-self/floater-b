@@ -7,7 +7,7 @@ import BigText from './BigText';
 import Footer from './Footer';
 import ColorPicker from './ColorPicker';
 import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
-import { generateScriptContent, uploadScript, appendScriptToHead } from './scriptUtils';
+import { generateScriptContent, uploadScript } from './scriptUtils';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -30,6 +30,21 @@ const Home = () => {
     setAllFilled(bgImageUrl && iframeUrl);
   }, [bgImageUrl, iframeUrl]);
 
+  // Dynamically inject script
+  useEffect(() => {
+    if (scriptUrl) {
+      const script = document.createElement('script');
+      script.src = scriptUrl;
+      script.async = true;
+      document.head.appendChild(script);
+
+      // Cleanup on unmount
+      return () => {
+        document.head.removeChild(script);
+      };
+    }
+  }, [scriptUrl]);
+
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
@@ -41,28 +56,23 @@ const Home = () => {
         tooltipText: label,
         iframeUrl
       });
-
       const uploadedScriptUrl = await uploadScript(scriptContent);
       setScriptUrl(uploadedScriptUrl);
-
-  
-      appendScriptToHead(uploadedScriptUrl);
     } catch (error) {
       console.error('Error generating and uploading script:', error.message);
     }
   };
 
- const copyToClipboard = (text) => {
-  navigator.clipboard.writeText(text).then(() => {
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  });
-};
-
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-    <script src="https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/scripts%2F1726591738316-fiqt4swysb.js?alt=media&token=849eea68-7eea-4498-a2e3-ab52440338e6"></script>"></script>      <header className="relative p-6 bg-opacity-30 w-full max-w-screen-2xl mx-auto flex items-center justify-between">
+      <header className="relative p-6 bg-opacity-30 w-full max-w-screen-2xl mx-auto flex items-center justify-between">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-200 flex-grow">
           Floater B.
         </h1>
@@ -78,7 +88,7 @@ const Home = () => {
             )}
           </button>
           <a
-            href="https://github.com/sudo-self/"
+            href="https://github.com/sudo-self/floater-b"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-gray-300 transition-colors duration-300"
@@ -108,7 +118,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Enter image URL:"
+                placeholder="enter image URL:"
                 value={bgImageUrl}
                 onChange={(e) => setBgImageUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -117,7 +127,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Enter website URL:"
+                placeholder="enter website URL:"
                 value={iframeUrl}
                 onChange={(e) => setIframeUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -126,7 +136,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Enter button name:"
+                placeholder="enter button name:"
                 value={label}
                 onChange={(e) => setLabel(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -141,15 +151,14 @@ const Home = () => {
             </button>
             {scriptUrl && (
               <div className="mt-4 flex flex-col items-center">
-               <img
-  onClick={() => {
-    copyToClipboard(`<script src="${scriptUrl}"></script>`);
-  }}
-  src="https://api.iconify.design/ic:outline-copy-all.svg?color=%23929292"
-  alt="Copy icon"
-  className="w-8 h-8 mb-1 cursor-pointer"
-/>
-
+                <img
+                  onClick={() => {
+                    copyToClipboard(`<script src="${scriptUrl}"></script>`);
+                  }}
+                  src="https://api.iconify.design/ic:outline-copy-all.svg?color=%23929292"
+                  alt="Copy icon"
+                  className="w-8 h-8 mb-1 cursor-pointer"
+                />
                 <span>{copied ? 'Copied!' : 'Copy script tag'}</span>
               </div>
             )}
@@ -170,7 +179,7 @@ const Home = () => {
               alignItems: "center",
               justifyContent: "center",
             }}
-            title={`Switch to ${shape === "circle" ? "square" : "circle"}`}
+            title={`git push origin ${shape === "circle" ? "square" : "circle"}`}
           >
             <span
               className="absolute inset-0"
@@ -200,3 +209,4 @@ const Home = () => {
 };
 
 export default Home;
+
