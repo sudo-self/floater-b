@@ -5,18 +5,18 @@ export default function Footer() {
         &nbsp;&nbsp;&nbsp;&#10085;&nbsp;
         <a
           className="ml-1 text-secondary hover:text-primary group"
-          href="https://jessejesse.xyz"
+          href="https://floater.jessejesse.xyz"
           target="_blank"
           rel="noopener noreferrer"
         >
-          JesseJesse.xyz
+          floater.JesseJesse.xyz
           <span className="ml-1 transition-opacity duration-200 ease-in-out opacity-0 group-hover:opacity-100">
             &nbsp;↗
           </span>
         </a>
       </p>
       <a
-        href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsudo-self%2Ffloater-xyz"
+        href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsudo-self%2Ffloater-b"
         target="_blank"
         rel="noopener noreferrer"
       >

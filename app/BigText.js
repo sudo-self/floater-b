@@ -1,3 +1,6 @@
+// /app/BigText.js
+
+
 import React from 'react';
 import { useInterval } from 'react-use';
 import classNames from './ClassNames';
@@ -50,4 +53,3 @@ function BigText({ slides }) {
 }
 
 export default BigText;
-

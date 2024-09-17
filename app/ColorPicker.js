@@ -17,8 +17,32 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
     { name: "Electric Blue", hex: "#7df9ff" },
     { name: "Hot Pink", hex: "#ff69b4" },
     { name: "Crimson", hex: "#dc143c" },
+    { name: "Salmon", hex: "#fa8072" },
+    { name: "Electric Blue", hex: "#7df9ff" },
+    { name: "Hot Pink", hex: "#ff69b4" },
+    { name: "Crimson", hex: "#dc143c" },
     { name: "Peach Puff", hex: "#ffdab9" },
-  ];
+    { name: "Neon Green", hex: "#39ff14" },
+    { name: "Electric Purple", hex: "#bf00ff" },
+    { name: "Coral", hex: "#ff7f50" },
+    { name: "Midnight Black", hex: "#0a0a0a" },
+    { name: "Neon Yellow", hex: "#ccff00" },
+    { name: "Moss Green", hex: "#8a9a5b" },
+    { name: "Maroon", hex: "#800000" },
+    { name: "Neon Pink", hex: "#ff10f0" },
+    { name: "Midnight Blue", hex: "#191970" },
+    { name: "Electric Blue", hex: "#00ffff" },
+    { name: "Neon Orange", hex: "#ff5f1f" },
+    { name: "Dark Violet", hex: "#9400d3" },
+    { name: "Sandy Brown", hex: "#f4a460" },
+    { name: "Hot Pink", hex: "#ff69b4" },
+    { name: "Crimson", hex: "#dc143c" },
+    { name: "Neon Cyan", hex: "#0ffef9" },
+    { name: "Dark Slate Gray", hex: "#2f4f4f" },
+    { name: "Peach Puff", hex: "#ffdab9" },
+    { name: "Wheat", hex: "#f5deb3" },
+    { name: "Chocolate", hex: "#d2691e" }
+    ];
 
   const handleColorClick = (color) => {
     if (activeColorInput === "color") {
@@ -30,7 +54,7 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
 
   return (
     <div className="mt-4">
-      <h3 className="text-lg font-semibold mb-2">Select Color</h3>
+      <h3 className="text-lg font-semibold mb-2">colorful</h3>
       <div className="flex flex-wrap gap-2">
         {colors.map(({ name, hex }) => (
           <div
@@ -47,4 +71,3 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
 };
 
 export default ColorPicker;
-
