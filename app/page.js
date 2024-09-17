@@ -77,7 +77,7 @@ const Home = () => {
             )}
           </button>
           <a
-            href="https://github.com/sudo-self/floater-b"
+            href="https://github.com/sudo-self/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-gray-300 transition-colors duration-300"
