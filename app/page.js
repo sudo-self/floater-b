@@ -146,7 +146,7 @@ const Home = () => {
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
               />
             </div>
-         <button
+   <button
   onClick={handleGenerateAndUpload}
   disabled={!allFilled}
   className={`px-4 py-2 ${allFilled ? 'bg-green-900' : 'bg-gray-400'} text-white rounded`}
@@ -167,9 +167,6 @@ const Home = () => {
     <span>{copied ? 'Embed script is ready!' : 'Copy floater button'}</span>
   </div>
 )}
-            )}
-          </div>
-        )}
 
         <div className="flex justify-center mt-8">
           <button
