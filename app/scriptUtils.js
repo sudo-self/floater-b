@@ -1,7 +1,7 @@
 // script-utils.js
 import { ref, uploadString, getDownloadURL } from 'firebase/storage';
-import { getCurrentUser } from './firebase-auth'; // Import the function to get the current user
-import { storage } from './firebase-config';
+import { getCurrentUser } from './firebase'; // Import the function to get the current user
+import { storage } from './firebase';
 
 // Generate a unique filename for the script
 const generateUniqueFilename = () => {
