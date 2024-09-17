@@ -5,15 +5,18 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
-git clone https://github.com/sudo-self/floater-b.git
-cd floater-b
-pnpm i
-pnpm run dev
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`.
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
 
 
