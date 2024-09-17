@@ -141,14 +141,15 @@ const Home = () => {
             </button>
             {scriptUrl && (
               <div className="mt-4 flex flex-col items-center">
-                <img
-                  onClick={() => {
-                    copyToClipboard(`<script src="${scriptUrl}"></script>`);
-                  }}
-                  src="https://api.iconify.design/ic:outline-copy-all.svg?color=%23929292"
-                  alt="Copy icon"
-                  className="w-8 h-8 mb-1 cursor-pointer"
-                />
+               <img
+  onClick={() => {
+    copyToClipboard(`<script src="${scriptUrl}"></script>`);
+  }}
+  src="https://api.iconify.design/ic:outline-copy-all.svg?color=%23929292"
+  alt="Copy icon"
+  className="w-8 h-8 mb-1 cursor-pointer"
+/>
+
                 <span>{copied ? 'Copied!' : 'Copy script tag'}</span>
               </div>
             )}
