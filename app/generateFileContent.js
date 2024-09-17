@@ -1,7 +1,16 @@
-// /app/generateFileContent.js
+// scriptUtils.js
 
-export const generateFileContent = ({ bgImageUrl, tooltipText, iframeUrl }) => `
-  (function() {
+/**
+ * Generates the script content with the specified parameters.
+ * @param {Object} options - The options for the script content.
+ * @param {string} options.bgImageUrl - The background image URL for the button.
+ * @param {string} options.tooltipText - The text for the tooltip.
+ * @param {string} options.iframeUrl - The URL for the iframe.
+ * @returns {string} The generated script content.
+ */
+
+export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) => `
+(function() {
     var style = document.createElement('style');
     style.innerHTML = \`
       .unique-floating-button {

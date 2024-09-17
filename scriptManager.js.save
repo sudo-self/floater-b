@@ -1,0 +1,72 @@
+import React, { useState } from 'react';
+import { generateScriptContent, uploadScript, appendScriptToHead } from './scriptUtils';
+
+const ScriptManager = () => {
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [shape, setShape] = useState('circle'); // Default shape
+
+  const handleGenerateAndUploadScript = async () => {
+    setIsProcessing(true);
+
+    const scriptContent = generateScriptContent({
+      bgImageUrl: 'https://example.com/button-image.png',
+      tooltipText: 'Click me!',
+      iframeUrl: 'https://example.com/content'
+    });
+
+    try {
+      const scriptTag = await uploadScript(scriptContent);
+      const urlMatch = scriptTag.match(/src="([^"]+)"/);
+      if (urlMatch) {
+        const downloadUrl = urlMatch[1];
+        appendScriptToHead(downloadUrl);
+        console.log('Script added to head successfully.');
+      }
+    } catch (error) {
+      console.error('Error uploading script:', error);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  return (
+    <div>
+      <div className="flex justify-center mt-8">
+        <button
+          onClick={() => setShape(shape === 'circle' ? 'square' : 'circle')}
+          className={`p-2 transition-colors duration-300 text-white border border-gray-950 focus:outline-none
+          ${shape === 'circle' ? 'bg-green-500' : 'bg-gray-800'}
+          ${shape === 'circle' ? 'rounded-full' : 'rounded-none'} relative`}
+          style={{
+            backgroundColor: '#4b0082',
+            width: '70px',
+            height: '70px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          title={`Switch to ${shape === 'circle' ? 'square' : 'circle'}`}
+        >
+          <span
+            className="absolute inset-0"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.3)',
+              opacity: 0,
+              transition: 'opacity 0.3s',
+              zIndex: -1,
+            }}
+          />
+          {shape === 'circle' ? '(■_■)' : '[■_■]'}
+        </button>
+      </div>
+      <div className="flex justify-center mt-8">
+        <button onClick={handleGenerateAndUploadScript} disabled={isProcessing}>
+          {isProcessing ? 'Processing...' : 'Generate and Upload Script'}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default ScriptManager;
+

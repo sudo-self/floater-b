@@ -6,7 +6,8 @@ import { FaGithub } from 'react-icons/fa';
 import BigText from './BigText';
 import Footer from './Footer';
 import ColorPicker from './ColorPicker';
-import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut, generateScriptContent, uploadScript } from './firebase';
+import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
+import { generateScriptContent, uploadScript, appendScriptToHead } from './scriptUtils';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -22,11 +23,7 @@ const Home = () => {
   const user = useAuth();
 
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    document.documentElement.classList.toggle('dark', darkMode);
   }, [darkMode]);
 
   useEffect(() => {
@@ -38,13 +35,21 @@ const Home = () => {
   };
 
   const handleGenerateAndUpload = async () => {
-    const scriptContent = generateScriptContent({
-      bgImageUrl,
-      tooltipText: label,
-      iframeUrl
-    });
-    const uploadedScriptUrl = await uploadScript(scriptContent);
-    setScriptUrl(uploadedScriptUrl);
+    try {
+      const scriptContent = generateScriptContent({
+        bgImageUrl,
+        tooltipText: label,
+        iframeUrl
+      });
+
+      const uploadedScriptUrl = await uploadScript(scriptContent);
+      setScriptUrl(uploadedScriptUrl);
+
+  
+      appendScriptToHead(uploadedScriptUrl);
+    } catch (error) {
+      console.error('Error generating and uploading script:', error.message);
+    }
   };
 
   const copyToClipboard = (text) => {
@@ -88,10 +93,10 @@ const Home = () => {
         {!user ? (
           <div className="flex flex-row space-x-4 items-center justify-center p-4">
             <button className="px-4 py-2 bg-blue-700 text-white rounded" onClick={signInWithGoogle}>
-              Sign in Google
+              Sign in with Google
             </button>
             <button className="px-4 py-2 bg-gray-800 text-white rounded" onClick={signInWithGithub}>
-              Sign in GitHub
+              Sign in with GitHub
             </button>
           </div>
         ) : (
@@ -102,7 +107,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Image URL:"
+                placeholder="Enter image URL:"
                 value={bgImageUrl}
                 onChange={(e) => setBgImageUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -111,9 +116,18 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Website URL:"
+                placeholder="Enter website URL:"
                 value={iframeUrl}
                 onChange={(e) => setIframeUrl(e.target.value)}
+                className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
+              />
+            </div>
+            <div className="mb-4">
+              <input
+                type="text"
+                placeholder="Enter button name:"
+                value={label}
+                onChange={(e) => setLabel(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
               />
             </div>
@@ -154,7 +168,7 @@ const Home = () => {
               alignItems: "center",
               justifyContent: "center",
             }}
-            title={`git push origin ${shape === "circle" ? "square" : "circle"}`}
+            title={`Switch to ${shape === "circle" ? "square" : "circle"}`}
           >
             <span
               className="absolute inset-0"
@@ -184,5 +198,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
