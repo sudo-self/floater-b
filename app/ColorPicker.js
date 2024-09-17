@@ -42,7 +42,7 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
     { name: "Peach Puff", hex: "#ffdab9" },
     { name: "Wheat", hex: "#f5deb3" },
     { name: "Chocolate", hex: "#d2691e" }
-    ];
+  ];
 
   const handleColorClick = (color) => {
     if (activeColorInput === "color") {
@@ -52,18 +52,27 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
     }
   };
 
+  const rows = [];
+  for (let i = 0; i < colors.length; i += 10) {
+    rows.push(colors.slice(i, i + 10));
+  }
+
   return (
     <div className="mt-4">
-      <h3 className="text-lg font-semibold mb-2">colorful</h3>
-      <div className="flex flex-wrap gap-2">
-        {colors.map(({ name, hex }) => (
-          <div
-            key={hex}
-            title={name}
-            style={{ backgroundColor: hex }}
-            className="w-8 h-8 rounded cursor-pointer border border-gray-300"
-            onClick={() => handleColorClick(hex)}
-          />
+      <h3 className="text-lg font-semibold mb-2 text-center">Colorful</h3>
+      <div className="flex flex-col items-center">
+        {rows.map((row, rowIndex) => (
+          <div key={rowIndex} className="flex gap-2 mb-2">
+            {row.map(({ name, hex }) => (
+              <div
+                key={hex}
+                title={name}
+                style={{ backgroundColor: hex }}
+                className="w-10 h-10 rounded cursor-pointer border border-gray-300"
+                onClick={() => handleColorClick(hex)}
+              />
+            ))}
+          </div>
         ))}
       </div>
     </div>
