@@ -30,7 +30,7 @@ const Home = () => {
     setAllFilled(bgImageUrl && iframeUrl);
   }, [bgImageUrl, iframeUrl]);
 
-  // Dynamically inject script
+  // Dynamically inject script into the document's head
   useEffect(() => {
     if (scriptUrl) {
       const script = document.createElement('script');
@@ -38,7 +38,7 @@ const Home = () => {
       script.async = true;
       document.head.appendChild(script);
 
-      // Cleanup on unmount
+      // Cleanup script tag on unmount
       return () => {
         document.head.removeChild(script);
       };
@@ -46,29 +46,32 @@ const Home = () => {
   }, [scriptUrl]);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    setDarkMode((prevMode) => !prevMode);
   };
 
+  // Function to generate and upload script
   const handleGenerateAndUpload = async () => {
     try {
       const scriptContent = generateScriptContent({
         bgImageUrl,
-        tooltipText: label,
-        iframeUrl
+        tooltipText: label, // Ensure 'label' is properly defined in your component
+        iframeUrl,
       });
       const uploadedScriptUrl = await uploadScript(scriptContent);
-      setScriptUrl(uploadedScriptUrl);
+      setScriptUrl(uploadedScriptUrl); // Update the script URL
     } catch (error) {
       console.error('Error generating and uploading script:', error.message);
     }
   };
 
+  // Function to copy text to clipboard
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(() => {
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setTimeout(() => setCopied(false), 2000); // Reset 'copied' state after 2 seconds
     });
   };
+
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -143,25 +146,27 @@ const Home = () => {
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
               />
             </div>
-            <button
-              onClick={handleGenerateAndUpload}
-              disabled={!allFilled}
-              className={`px-4 py-2 ${allFilled ? 'bg-green-900' : 'bg-gray-400'} text-white rounded`}
-            >
-              Create Custom Floater
-            </button>
-            {scriptUrl && (
-              <div className="mt-4 flex flex-col items-center">
-                <img
-                  onClick={() => {
-                    copyToClipboard(`${scriptUrl}`);
-                  }}
-                  src="https://api.iconify.design/ic:outline-copy-all.svg?color=%23929292"
-                  alt="Copy icon"
-                  className="w-8 h-8 mb-1 cursor-pointer"
-                />
-                <span>{copied ? 'Embed script is ready!' : 'Copy floater button'}</span>
-              </div>
+         <button
+  onClick={handleGenerateAndUpload}
+  disabled={!allFilled}
+  className={`px-4 py-2 ${allFilled ? 'bg-green-900' : 'bg-gray-400'} text-white rounded`}
+>
+  Create Custom Floater
+</button>
+
+{scriptUrl && (
+  <div className="mt-4 flex flex-col items-center">
+    <img
+      onClick={() => {
+        copyToClipboard(`<script src="${scriptUrl}"></script>`);
+      }}
+      src="https://api.iconify.design/ic:outline-copy-all.svg?color=%23929292"
+      alt="Copy icon"
+      className="w-8 h-8 mb-1 cursor-pointer"
+    />
+    <span>{copied ? 'Embed script is ready!' : 'Copy floater button'}</span>
+  </div>
+)}
             )}
           </div>
         )}
