@@ -1,0 +1,90 @@
+/* app/globals.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url(/fonts/inter-var-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --footer-background: transparent;
+  --footer-text: #ffffff;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --footer-background: transparent;
+  --footer-text: #eeeeee;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+header {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+footer {
+  color: var(--footer-text);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #333;
+  color: #f8f8f2;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1001;
+}
+
+.tooltip.visible {
+  opacity: 1;
+}
+
+.tooltip-long {
+  position: absolute;
+  background-color: #333;
+  color: #f8f8f2;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1002;
+}
+
+.tooltip-long.visible {
+  opacity: 1;
+}
+

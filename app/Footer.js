@@ -1,0 +1,32 @@
+export default function Footer() {
+  return (
+    <div className="flex flex-col items-center mx-auto my-16 text-center">
+      <p className="text-quaternary">
+        &nbsp;&nbsp;&nbsp;&#10085;&nbsp;
+        <a
+          className="ml-1 text-secondary hover:text-primary group"
+          href="https://jessejesse.xyz"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          JesseJesse.xyz
+          <span className="ml-1 transition-opacity duration-200 ease-in-out opacity-0 group-hover:opacity-100">
+            &nbsp;↗
+          </span>
+        </a>
+      </p>
+      <a
+        href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsudo-self%2Ffloater-xyz"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://vercel.com/button"
+          alt="Deploy with Vercel"
+          className="mt-4 align-middle"
+        />
+      </a>
+    </div>
+  );
+}
+
