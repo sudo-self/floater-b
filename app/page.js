@@ -30,7 +30,6 @@ const Home = () => {
     setAllFilled(bgImageUrl && iframeUrl);
   }, [bgImageUrl, iframeUrl]);
 
-  // Dynamically inject script
   useEffect(() => {
     if (scriptUrl) {
       const script = document.createElement('script');
@@ -38,7 +37,7 @@ const Home = () => {
       script.async = true;
       document.head.appendChild(script);
 
-      // Cleanup on unmount
+     
       return () => {
         document.head.removeChild(script);
       };
