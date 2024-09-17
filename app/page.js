@@ -52,12 +52,13 @@ const Home = () => {
     }
   };
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  };
+ const copyToClipboard = (text) => {
+  navigator.clipboard.writeText(text).then(() => {
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  });
+};
+
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
