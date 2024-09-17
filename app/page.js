@@ -64,13 +64,14 @@ const Home = () => {
     }
   };
 
-  // Function to copy text to clipboard
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000); // Reset 'copied' state after 2 seconds
-    });
-  };
+const copyToClipboard = (text) => {
+  const sanitizedText = text.trim(); // Ensure no extra spaces or incorrect formatting
+  navigator.clipboard.writeText(sanitizedText).then(() => {
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000); // Reset 'copied' state after 2 seconds
+  });
+};
+
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -115,14 +116,14 @@ const Home = () => {
 
             {scriptUrl && (
               <div className="mt-4 flex flex-col items-center">
-                <img
-                  onClick={() => {
-                    copyToClipboard(`<script src="${scriptUrl}"></script>`);
-                  }}
-                  src="https://api.iconify.design/ic:outline-copy-all.svg?color=%23929292"
-                  alt="Copy icon"
-                  className="w-8 h-8 mb-1 cursor-pointer"
-                />
+               <img
+  onClick={() => {
+    copyToClipboard(`<script src="${scriptUrl}"></script>`);
+  }}
+  src="https://api.iconify.design/ic:outline-copy-all.svg?color=%23929292"
+  alt="Copy icon"
+  className="w-8 h-8 mb-1 cursor-pointer"
+/>
                 <span>{copied ? 'Embed script is ready!' : 'Copy floater button'}</span>
               </div>
             )}
