@@ -30,6 +30,7 @@ const Home = () => {
     setAllFilled(bgImageUrl && iframeUrl);
   }, [bgImageUrl, iframeUrl]);
 
+  // Dynamically inject script
   useEffect(() => {
     if (scriptUrl) {
       const script = document.createElement('script');
@@ -37,7 +38,7 @@ const Home = () => {
       script.async = true;
       document.head.appendChild(script);
 
-     
+      // Cleanup on unmount
       return () => {
         document.head.removeChild(script);
       };
@@ -158,7 +159,7 @@ const Home = () => {
                   alt="Copy icon"
                   className="w-8 h-8 mb-1 cursor-pointer"
                 />
-                <span>{copied ? 'embed script is ready!' : 'copy floater button'}</span>
+                <span>{copied ? 'Embed script is ready!' : 'Copy floater button'}</span>
               </div>
             )}
           </div>
@@ -178,7 +179,7 @@ const Home = () => {
               alignItems: "center",
               justifyContent: "center",
             }}
-            title={`git push origin ${shape === "circle" ? "square" : "circle"}`}
+            title={`Click to toggle shape to ${shape === "circle" ? "square" : "circle"}`}
           >
             <span
               className="absolute inset-0"
@@ -208,4 +209,3 @@ const Home = () => {
 };
 
 export default Home;
-
