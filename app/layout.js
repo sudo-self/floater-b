@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import { Head } from 'next/document'; 
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,13 +15,19 @@ const geistMono = localFont({
 
 export const metadata = {
   title: "Floater B.",
-  description: "create cutom floater buttons",
+  description: "Create custom floater buttons",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-    <script src="https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/scripts%2F1726642674787-nbl1t6kdlp.js?alt=media&token=e12485cb-0d3a-4a84-ae8c-537fb9718703"></script>      <body
+      <Head>
+        <script
+          src="https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/scripts%2F1726642674787-nbl1t6kdlp.js?alt=media&token=e12485cb-0d3a-4a84-ae8c-537fb9718703"
+          async
+        ></script>
+      </Head>
+      <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
@@ -28,3 +35,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
