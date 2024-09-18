@@ -1,9 +1,7 @@
-// /app/api/floater/route.js
-
+// app/api/floater/route.js
 
 export async function POST(req) {
   const { tooltipText, iframeSrc, imageURL, labelTextColor } = await req.json();
-
 
   const floaterScript = `
     class FloaterButton {
@@ -232,11 +230,12 @@ export async function POST(req) {
 /*
  
  curl -X POST https://floater.jessejesse.xyz/api/floater \
- -H "Content-Type: application/json" \
- -d '{
-       "tooltipText": "Floater B.",
-       "iframeSrc": "https://floater.jessejesse.xyz",
-       "imageURL": "https://example.com/image.png",
-       "labelTextColor": "#ffffff"
-     }'
+   -H "Content-Type: application/json" \
+   -d '{
+         "tooltipText": "Floater B.",
+         "iframeSrc": "https://floater.jessejesse.xyz",
+         "imageURL": "https://floater.jessejesse.xyz/favicon-32x32.png",
+         "labelTextColor": "#FFFFFF"
+       }'
+
  */
