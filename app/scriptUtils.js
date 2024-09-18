@@ -1,15 +1,26 @@
+import { getStorage, ref, uploadString, getDownloadURL } from 'firebase/storage';
+import { initializeApp } from 'firebase/app';
 
-import { ref, uploadString, getDownloadURL } from 'firebase/storage';
-import { getCurrentUser } from './firebase';
-import { storage } from './firebase';
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBlF6vV8QM3pgKzXHR7bxi_dHphZ-7gNr4",
+  authDomain: "jessejessexyz.firebaseapp.com",
+  databaseURL: "https://jessejessexyz-default-rtdb.firebaseio.com",
+  projectId: "jessejessexyz",
+  storageBucket: "jessejessexyz.appspot.com",
+  messagingSenderId: "669687494879",
+  appId: "1:669687494879:web:5a07750ab8367a71fad16a",
+  measurementId: "G-4XWDBHPV61",
+};
 
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
 
 const generateUniqueFilename = () => {
   const timestamp = Date.now();
   const randomString = Math.random().toString(36).substring(2, 12);
   return `${timestamp}-${randomString}.js`;
 };
-
 
 export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) => {
   const uniqueId = `btn-${Math.random().toString(36).substring(2, 9)}`;
@@ -94,6 +105,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       \`;
       document.head.appendChild(style);
 
+      // Create the button
       var button = document.createElement('div');
       button.className = '${uniqueId}-floating-button';
       button.addEventListener('click', openPopup);
@@ -103,6 +115,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       });
       document.body.appendChild(button);
 
+      // Create the popup
       var popup = document.createElement('div');
       popup.id = '${uniqueId}-popup';
       popup.className = '${uniqueId}-popup';
@@ -112,6 +125,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       \`;
       document.body.appendChild(popup);
 
+      // Create the tooltip
       var tooltip = document.createElement('div');
       tooltip.className = '${uniqueId}-tooltip';
       tooltip.innerText = '${tooltipText}';
@@ -131,6 +145,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
         }
       }
 
+      // Tooltip display on hover
       button.addEventListener('mouseover', () => {
         tooltip.classList.add('visible');
       });
@@ -138,6 +153,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
         tooltip.classList.remove('visible');
       });
 
+      // Dragging functionality
       let isDragging = false;
       let offsetX, offsetY;
 
@@ -193,22 +209,26 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
   `;
 };
 
-
 export const uploadScript = async (scriptContent) => {
-  const user = getCurrentUser();
-  if (!user) {
-    throw new Error('User is not authenticated');
+  try {
+    const filename = generateUniqueFilename();
+    const scriptRef = ref(storage, `scripts/${filename}`);
+
+    await uploadString(scriptRef, scriptContent);
+
+    const downloadUrl = await getDownloadURL(scriptRef);
+
+    return '${downloadUrl}`;
+  } catch (error) {
+    console.error('Error uploading script:', error.message);
+    throw error; 
   }
+};
 
-  const filename = generateUniqueFilename();
-  const scriptRef = ref(storage, `scripts/${filename}`);
-
-
-  await uploadString(scriptRef, scriptContent);
-
- 
-  const downloadUrl = await getDownloadURL(scriptRef);
-
-  return downloadUrl;
+export const appendScriptToHead = (scriptUrl) => {
+  const script = document.createElement('script');
+  script.src = scriptUrl;
+  script.async = true;
+  document.head.appendChild(script);
 };
 
