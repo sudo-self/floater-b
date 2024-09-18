@@ -5,11 +5,11 @@ export default function Footer() {
         &nbsp;&nbsp;&nbsp;&#10085;&nbsp;
         <a
           className="ml-1 text-secondary hover:text-primary group"
-          href="https://floater.jessejesse.xyz"
+          href="https://jessejesse.xyz"
           target="_blank"
           rel="noopener noreferrer"
         >
-          floater.JesseJesse.xyz
+          JesseJesse.xyz
           <span className="ml-1 transition-opacity duration-200 ease-in-out opacity-0 group-hover:opacity-100">
             &nbsp;↗
           </span>
