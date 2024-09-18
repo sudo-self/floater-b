@@ -7,7 +7,9 @@ import BigText from './BigText';
 import Footer from './Footer';
 import ColorPicker from './ColorPicker';
 import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
-import { generateScriptContent } from './scriptUtils'; 
+import { generateScriptContent } from './scriptUtils';
+import firebase from 'firebase/app';
+import 'firebase/storage'; // Ensure Firebase Storage is imported
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -43,9 +45,26 @@ const Home = () => {
       bgImageUrl,
       iframeUrl,
     });
-    
-    
-    setScriptUrl(`https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/scripts%2F${Date.now()}.js`);
+
+    try {
+      const uploadedScriptUrl = await uploadScriptToFirebase(scriptContent);
+      setScriptUrl(uploadedScriptUrl);
+    } catch (error) {
+      console.error('Error uploading script:', error);
+    }
+  };
+
+  const uploadScriptToFirebase = async (scriptContent) => {
+    const filename = `scripts/${Date.now()}.js`;
+    const storageRef = firebase.storage().ref(filename);
+
+    try {
+      await storageRef.putString(scriptContent, 'raw', { contentType: 'application/javascript' });
+      return await storageRef.getDownloadURL();
+    } catch (error) {
+      console.error('Error uploading script to Firebase:', error);
+      throw error;
+    }
   };
 
   const copyToClipboard = (text) => {
@@ -146,7 +165,7 @@ const Home = () => {
                   alt="Copy icon"
                   className="w-8 h-8 mb-1 cursor-pointer"
                 />
-                <span>{copied ? 'floater copied!' : 'copy button'}</span>
+                <span>{copied ? 'Floater copied!' : 'Copy button'}</span>
               </div>
             )}
           </div>
