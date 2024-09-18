@@ -1,22 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## floater buttons
+<img width="1440" alt="nextjs" src="https://github.com/user-attachments/assets/83df2555-408e-42fd-91a6-727a3e16f1f8">
+<img width="1440" alt="npx" src="https://github.com/user-attachments/assets/b690f056-e4d5-42e4-8abc-850ae02d4f08">
 
-## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`.
 
 
 
