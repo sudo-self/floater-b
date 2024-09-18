@@ -32,12 +32,13 @@ export default function RootLayout({ children }) {
         <meta property="og:url" content="https://floater.jessejesse.xyz" />
         <meta property="og:title" content="Create Custom Embeddable Floater Buttons" />
         <meta property="og:description" content="Create Custom Embeddable Floater buttons that you can share or host on your site with zero-code" />
-        <meta property="og:image" content="https://floater.jessejesse.xyz/floater.og" />
+        <meta property="og:image" content="https://floater.jessejesse.xyz/floater.og">   
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://floater.jessejesse.xyz" />
         <meta property="twitter:title" content="Create Custom Embeddable Floater Buttons" />
         <meta property="twitter:description" content="Create Custom Embeddable Floater buttons that you can share or host on your site with zero-code" />
-        <meta property="twitter:image" content="https://floater.jessejesse.xyz/floater.og" />
+        <meta property="twitter:image" content="https://floater.jessejesse.xyz/floater.og">
+        <meta property="twitter:card" content="summary_large_image">    
         <meta name="author" content="Floater B." />
       </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
