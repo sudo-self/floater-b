@@ -193,7 +193,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
   `;
 };
 
-// Upload the script content and return the script URL if user is authenticated
+
 export const uploadScript = async (scriptContent) => {
   const user = getCurrentUser();
   if (!user) {
@@ -203,10 +203,10 @@ export const uploadScript = async (scriptContent) => {
   const filename = generateUniqueFilename();
   const scriptRef = ref(storage, `scripts/${filename}`);
 
-  // Upload the script
+
   await uploadString(scriptRef, scriptContent);
 
-  // Get the download URL
+ 
   const downloadUrl = await getDownloadURL(scriptRef);
 
   return downloadUrl;
