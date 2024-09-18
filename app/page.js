@@ -98,10 +98,10 @@ const Home = () => {
         {!user ? (
           <div className="flex flex-row space-x-4 items-center justify-center p-4">
             <button className="px-4 py-2 bg-blue-700 text-white rounded" onClick={signInWithGoogle}>
-              Google
+              Google Sign in
             </button>
             <button className="px-4 py-2 bg-gray-800 text-white rounded" onClick={signInWithGithub}>
-              GitHub
+              GitHub Sign in 
             </button>
           </div>
         ) : (
