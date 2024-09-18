@@ -13,7 +13,7 @@ export default function ClientScriptComponent() {
 
       {/* Project Lead Script */}
       <Script
-        src="https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/projectlead.js?alt=media&token=6270a0c7-2c63-4f7f-b963-dcf16f969c31"
+        src="https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/floaterLeft_BG.js?alt=media&token=7c41a90d-283f-4c81-8905-6ee7945397a9"
         strategy="lazyOnload"
       />
     </>
