@@ -112,7 +112,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Image URL"
+                placeholder="Image:"
                 value={bgImageUrl}
                 onChange={(e) => setBgImageUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -121,7 +121,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Website URL"
+                placeholder="Website:"
                 value={iframeUrl}
                 onChange={(e) => setIframeUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -130,8 +130,8 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Button Label"
-                value={label}
+                placeholder="Name:"
+                value={tooltipText}
                 onChange={(e) => setLabel(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
               />
