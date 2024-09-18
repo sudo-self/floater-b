@@ -1,4 +1,4 @@
-  const generateUniqueFilename = () => {
+const generateUniqueFilename = () => {
   const timestamp = Date.now();
   const randomString = Math.random().toString(36).substring(2, 12);
   return `${timestamp}-${randomString}.js`;
@@ -29,6 +29,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
+          position: relative;
         }
         .${uniqueId}-floating-button:hover {
           background-color: rgba(75, 0, 130, 0.8);
@@ -47,6 +48,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
           border-radius: 8px;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
           z-index: 1001;
+          position: relative;
         }
         .${uniqueId}-popup iframe {
           width: 100%;
@@ -67,10 +69,14 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
           justify-content: center;
           align-items: center;
           cursor: pointer;
+          font-size: 16px;
         }
         .${uniqueId}-tooltip {
           position: absolute;
-          background-color: #333;
+          top: 50%;
+          left: 100%;
+          transform: translate(10px, -50%);
+          background-color: rgba(51, 51, 51, 0.8);
           color: #f8f8f2;
           border-radius: 5px;
           padding: 5px 10px;
@@ -107,7 +113,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       \`;
       document.body.appendChild(popup);
 
-      // Create the tooltip
+  
       var tooltip = document.createElement('div');
       tooltip.className = '${uniqueId}-tooltip';
       tooltip.innerText = '${tooltipText}';
@@ -127,7 +133,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
         }
       }
 
-      // Tooltip display on hover
+  
       button.addEventListener('mouseover', () => {
         tooltip.classList.add('visible');
       });
@@ -135,7 +141,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
         tooltip.classList.remove('visible');
       });
 
-      // Dragging functionality
+
       let isDragging = false;
       let offsetX, offsetY;
 
@@ -207,10 +213,10 @@ export const uploadScript = async (scriptContent) => {
   }
 };
 
-
 export const appendScriptToHead = (scriptUrl) => {
   const script = document.createElement('script');
   script.src = scriptUrl;
   script.async = true;
   document.head.appendChild(script);
 };
+
