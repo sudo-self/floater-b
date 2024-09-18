@@ -151,12 +151,12 @@ const Home = () => {
               />
             </div>
             <button
-              onClick={handleGenerateAndUpload}
-              disabled={!allFilled}
-              className={`px-4 py-2 ${allFilled ? 'bg-green-900' : 'bg-gray-400'} text-white rounded`}
+            className={`px-4 py-2 bg-blue-500 text-white rounded ${allFilled ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
+            onClick={handleGenerateAndUpload}
+            disabled={!allFilled}
             >
-              Create Floater
-            </button>
+            Generate and Upload
+           </button
             {scriptUrl && (
               <div className="mt-4 flex flex-col items-center">
                 <img
