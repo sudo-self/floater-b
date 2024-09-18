@@ -36,23 +36,28 @@ const Home = () => {
     setDarkMode(!darkMode);
   };
 
-  const handleGenerateAndUpload = async () => {
-    const scriptContent = generateScriptContent({
-      color,
-      hoverColor,
-      shape,
-      label,
-      bgImageUrl,
-      iframeUrl,
-    });
+ const handleGenerateAndUpload = async () => {
+  console.log("Generating script content...");
+  const scriptContent = generateScriptContent({
+    color,
+    hoverColor,
+    shape,
+    label,
+    bgImageUrl,
+    iframeUrl,
+  });
 
-    try {
-      const uploadedScriptUrl = await uploadScriptToFirebase(scriptContent);
-      setScriptUrl(uploadedScriptUrl);
-    } catch (error) {
-      console.error('Error uploading script:', error);
-    }
-  };
+  console.log("Script content:", scriptContent);
+
+  try {
+    console.log("Uploading script...");
+    const uploadedScriptUrl = await uploadScript(scriptContent);
+    console.log("Uploaded script URL:", uploadedScriptUrl);
+    setScriptUrl(uploadedScriptUrl); 
+  } catch (error) {
+    console.error('Error uploading script:', error);
+  }
+};
 
   const uploadScriptToFirebase = async (scriptContent) => {
     const filename = `scripts/${Date.now()}.js`;
