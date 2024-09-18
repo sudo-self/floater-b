@@ -141,7 +141,7 @@ const Home = () => {
               onClick={handleGenerateAndUpload}
               disabled={!allFilled}
             >
-              Generate and Upload
+             Create Floater
             </button>
             {scriptUrl && (
               <div className="mt-4 flex flex-col items-center">
