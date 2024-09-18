@@ -88,7 +88,7 @@ const Home = () => {
       </header>
 
       <main className="flex-grow">
-        <BigText slides={['Embedabble', 'Floater', 'Buttons']} />
+        <BigText slides={['XYZ', 'Floater', 'Buttons']} />
 
         {!user ? (
           <div className="flex flex-row space-x-4 items-center justify-center p-4">
