@@ -218,12 +218,13 @@ export const uploadScript = async (scriptContent) => {
 
     const downloadUrl = await getDownloadURL(scriptRef);
 
-    return '${downloadUrl}`;
+    return downloadUrl;
   } catch (error) {
     console.error('Error uploading script:', error.message);
-    throw error; 
+    throw error;
   }
 };
+
 
 export const appendScriptToHead = (scriptUrl) => {
   const script = document.createElement('script');
