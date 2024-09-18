@@ -21,14 +21,14 @@ curl -X POST https://floater.jessejesse.xyz/api/floater \
          "iframeSrc": "https://floater.jessejesse.xyz",
          "imageURL": "https://floater.jessejesse.xyz/favicon-32x32.png",
          "labelTextColor": "#FFFFFF"
-       }
+       }'
 ```
 
 ## appending
 
 ```
 <script>
-  // JavaScript snippet from the server
+  // Floater.js from the server
   (function() {
     class FloaterButton {
     
