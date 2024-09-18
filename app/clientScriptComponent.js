@@ -13,7 +13,7 @@ export default function ClientScriptComponent() {
 
       {/*Project Lead*/}
       <Script
-        src="https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/projectlead.js?alt=media&token=8c5a3143-6c2a-4bda-9c61-8ec5a46f10c3"
+        src="https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/projectlead.js?alt=media&token=6270a0c7-2c63-4f7f-b963-dcf16f969c31"
         strategy="afterInteractive"
       />
     </>
