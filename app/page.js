@@ -7,7 +7,7 @@ import BigText from './BigText';
 import Footer from './Footer';
 import ColorPicker from './ColorPicker';
 import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
-import { generateScriptContent } from './scriptUtils'; // Ensure this is correctly imported
+import { generateScriptContent } from './scriptUtils'; 
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -44,9 +44,8 @@ const Home = () => {
       iframeUrl,
     });
     
-    // Simulating script URL for example
-    // Replace this with actual script uploading logic if needed
-    setScriptUrl(`https://example.com/scripts/${Date.now()}.js`);
+    
+    setScriptUrl(`https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/scripts%2F${Date.now()}.js`);
   };
 
   const copyToClipboard = (text) => {
