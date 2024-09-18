@@ -9,28 +9,28 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
 
   return `
     (function() {
-      var style = document.createElement('style');
-      style.innerHTML = \`
-        .${uniqueId}-floating-button {
-          position: fixed;
-          bottom: 20px;
-          right: 20px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          transition: background-color 0.3s ease;
-          z-index: 1000;
-          border-radius: 50%;
-          width: 60px;
-          height: 60px;
-          background-image: url('${bgImageUrl}');
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
-          position: relative;
-        }
+      document.addEventListener('DOMContentLoaded', function() {
+        var style = document.createElement('style');
+        style.innerHTML = \`
+          .${uniqueId}-floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background-image: url('${bgImageUrl}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
         .${uniqueId}-floating-button:hover {
           background-color: rgba(75, 0, 130, 0.8);
         }
