@@ -9,7 +9,7 @@ import ColorPicker from './ColorPicker';
 import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
 import { generateScriptContent } from './scriptUtils';
 import firebase from 'firebase/app';
-import 'firebase/storage'; // Ensure Firebase Storage is imported
+import 'firebase/storage';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(true);
