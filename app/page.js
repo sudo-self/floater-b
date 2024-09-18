@@ -93,10 +93,10 @@ const Home = () => {
         {!user ? (
           <div className="flex flex-row space-x-4 items-center justify-center p-4">
             <button className="px-4 py-2 bg-blue-700 text-white rounded" onClick={signInWithGoogle}>
-              Sign in with Google
+              Google Sign in
             </button>
             <button className="px-4 py-2 bg-gray-800 text-white rounded" onClick={signInWithGithub}>
-              Sign in with GitHub
+              GitHub Sign in
             </button>
           </div>
         ) : (
@@ -107,7 +107,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Enter image URL:"
+                placeholder="image URL:"
                 value={bgImageUrl}
                 onChange={(e) => setBgImageUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -116,7 +116,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Enter website URL:"
+                placeholder="website URL:"
                 value={iframeUrl}
                 onChange={(e) => setIframeUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -125,7 +125,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Enter button name:"
+                placeholder="button name:"
                 value={label}
                 onChange={(e) => setLabel(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -136,7 +136,7 @@ const Home = () => {
               disabled={!allFilled}
               className={`px-4 py-2 ${allFilled ? 'bg-green-900' : 'bg-gray-400'} text-white rounded`}
             >
-              Create Custom Floater
+              Create Floater
             </button>
             {scriptUrl && (
               <div className="mt-4 flex flex-col items-center">
@@ -146,7 +146,7 @@ const Home = () => {
                   alt="Copy icon"
                   className="w-8 h-8 mb-1 cursor-pointer"
                 />
-                <span>{copied ? 'embed button is ready!' : 'copy floater button'}</span>
+                <span>{copied ? 'floater copied!' : 'copy button'}</span>
               </div>
             )}
           </div>
