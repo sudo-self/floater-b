@@ -6,7 +6,7 @@ import { initializeApp } from 'firebase/app';
 import { getStorage, ref, uploadString } from 'firebase/storage';
 import { generateFileContent } from './generateFileContent';
 
-// Firebase configuration
+
 const firebaseConfig = {
   apiKey: "AIzaSyBlF6vV8QM3pgKzXHR7bxi_dHphZ-7gNr4",
   authDomain: "jessejessexyz.firebaseapp.com",
@@ -18,7 +18,7 @@ const firebaseConfig = {
   measurementId: "G-4XWDBHPV61",
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const storage = getStorage(app);
@@ -72,13 +72,13 @@ export const copyToClipboard = (text) => {
 
 export const handleGenerateAndUpload = async (options) => {
   try {
-    // Generate the file content
+ 
     const content = generateFileContent(options);
 
-    // Create a reference to the file in Firebase Storage
+
     const storageRef = ref(storage, 'generated-content/unique-floating-button.js');
 
-    // Upload the content to Firebase Storage
+  
     await uploadString(storageRef, content, 'raw');
 
     console.log('Upload Successful');
@@ -108,11 +108,11 @@ const Dashboard = ({ options }) => {
         </div>
       ) : (
         <div>
-          <button onClick={signInWithGoogle}>Sign in with Google</button>
-          <button onClick={signInWithGithub}>Sign in with GitHub</button>
+          <button onClick={signInWithGoogle}>Google</button>
+          <button onClick={signInWithGithub}>GitHub</button>
         </div>
       )}
-      <button onClick={handleGenerate}>Generate and Upload</button>
+      <button onClick={handleGenerate}>Create Custom Floater</button>
     </div>
   );
 };
