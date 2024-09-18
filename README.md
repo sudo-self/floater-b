@@ -24,7 +24,7 @@ curl -X POST https://floater.jessejesse.xyz/api/floater \
        }'
 ```
 
-## appending
+## embed
 
 ```
 <script>
