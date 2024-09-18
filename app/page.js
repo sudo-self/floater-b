@@ -7,9 +7,7 @@ import BigText from './BigText';
 import Footer from './Footer';
 import ColorPicker from './ColorPicker';
 import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
-import { generateScriptContent } from './scriptUtils';
-import firebase from 'firebase/app';
-import 'firebase/storage';
+import { generateScriptContent, uploadScript } from './scriptUtils';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -36,39 +34,22 @@ const Home = () => {
     setDarkMode(!darkMode);
   };
 
- const handleGenerateAndUpload = async () => {
-  console.log("Generating script content...");
-  const scriptContent = generateScriptContent({
-    color,
-    hoverColor,
-    shape,
-    label,
-    bgImageUrl,
-    iframeUrl,
-  });
-
-  console.log("Script content:", scriptContent);
-
-  try {
-    console.log("Uploading script...");
-    const uploadedScriptUrl = await uploadScript(scriptContent);
-    console.log("Uploaded script URL:", uploadedScriptUrl);
-    setScriptUrl(uploadedScriptUrl); 
-  } catch (error) {
-    console.error('Error uploading script:', error);
-  }
-};
-
-  const uploadScriptToFirebase = async (scriptContent) => {
-    const filename = `scripts/${Date.now()}.js`;
-    const storageRef = firebase.storage().ref(filename);
+  const handleGenerateAndUpload = async () => {
+    const scriptContent = generateScriptContent({
+      color,
+      hoverColor,
+      shape,
+      label,
+      bgImageUrl,
+      iframeUrl,
+    });
 
     try {
-      await storageRef.putString(scriptContent, 'raw', { contentType: 'application/javascript' });
-      return await storageRef.getDownloadURL();
+      const uploadedScriptUrl = await uploadScript(scriptContent);
+      setScriptUrl(uploadedScriptUrl); 
     } catch (error) {
-      console.error('Error uploading script to Firebase:', error);
-      throw error;
+      console.error('Error uploading script:', error);
+
     }
   };
 
@@ -77,7 +58,7 @@ const Home = () => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }).catch(err => {
-      console.error('Failed to copy text: ', err);
+      console.error('Failed to copy text:', err);
     });
   };
 
@@ -131,7 +112,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="image URL:"
+                placeholder="Image URL"
                 value={bgImageUrl}
                 onChange={(e) => setBgImageUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -140,7 +121,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="website URL:"
+                placeholder="Website URL"
                 value={iframeUrl}
                 onChange={(e) => setIframeUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -149,19 +130,19 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="button name:"
+                placeholder="Button Label"
                 value={label}
                 onChange={(e) => setLabel(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
               />
             </div>
             <button
-            className={`px-4 py-2 bg-blue-500 text-white rounded ${allFilled ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
-            onClick={handleGenerateAndUpload}
-            disabled={!allFilled}
+              className={`px-4 py-2 bg-blue-500 text-white rounded ${allFilled ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
+              onClick={handleGenerateAndUpload}
+              disabled={!allFilled}
             >
-            Generate and Upload
-           </button
+              Generate and Upload
+            </button>
             {scriptUrl && (
               <div className="mt-4 flex flex-col items-center">
                 <img
@@ -180,8 +161,7 @@ const Home = () => {
           <button
             onClick={() => setShape(shape === "circle" ? "square" : "circle")}
             className={`p-2 transition-colors duration-300 text-white border border-gray-950 focus:outline-none
-            ${shape === "circle" ? "bg-green-500" : "bg-gray-800"}
-            ${shape === "circle" ? "rounded-full" : "rounded-none"} relative`}
+            ${shape === "circle" ? "bg-green-500 rounded-full" : "bg-gray-800 rounded-none"} relative`}
             style={{
               backgroundColor: color || "#4b0082",
               width: "70px",
@@ -190,7 +170,7 @@ const Home = () => {
               alignItems: "center",
               justifyContent: "center",
             }}
-            title={`git push origin ${shape === "circle" ? "square" : "circle"}`}
+            title={`Switch to ${shape === "circle" ? "square" : "circle"}`}
           >
             <span
               className="absolute inset-0"
@@ -220,3 +200,4 @@ const Home = () => {
 };
 
 export default Home;
+
