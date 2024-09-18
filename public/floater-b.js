@@ -1,36 +1,3 @@
-// ADDED_USER_INPUT is a placeholder for code that is ALWAYS appended.
-
-// floater-b.js file is hosted at:
-
-// https://pub-62f7f17b63fe4f5cbbf739cf66c0c5ee.r2.dev/floater-b.js
-
-// Floater-b.js gets 5 adjustments
-
-// 1. Circle or Square
-
-// border-radius: 50% or 10px
-
-// 2. website url in two places
-
-// background-image: url('ADDED_USER_INPUT)
-
-// iframe src=
-
-// 3. Label (optional if left blank then  ‘ ‘)
-
-// content: 'ADDED_USER_INPUT';
-
-// 4. Image url
-
-//  background: url('ADDED_USER_INPUT');
-
-// floater-b.js ALWAYS gets unique file name and css className
-
-// THIS IS floater-b.js and its always a .js in this exact format with the 5
-
-// appened adjustments.    
-
-
 // ./generatedFileContent.js
 
 
