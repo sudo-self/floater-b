@@ -170,7 +170,7 @@ const Home = () => {
               alignItems: "center",
               justifyContent: "center",
             }}
-            title={`Switch to ${shape === "circle" ? "square" : "circle"}`}
+            title={`deploy preview ${shape === "circle" ? "square" : "circle"}`}
           >
             <span
               className="absolute inset-0"
