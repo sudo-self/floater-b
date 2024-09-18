@@ -4,5 +4,46 @@
 
 
 
+## npx
+
+```
+npx floater-xyz
+```
+
+
+##  api
+
+```
+curl -X POST https://floater.jessejesse.xyz/api/floater \
+   -H "Content-Type: application/json" \
+   -d '{
+         "tooltipText": "Floater B.",
+         "iframeSrc": "https://floater.jessejesse.xyz",
+         "imageURL": "https://floater.jessejesse.xyz/favicon-32x32.png",
+         "labelTextColor": "#FFFFFF"
+       }
+```
+
+## appending
+
+```
+<script>
+  // JavaScript snippet from the server
+  (function() {
+    class FloaterButton {
+    
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      new FloaterButton({
+        tooltipText: 'Floater B.',
+        iframeSrc: 'https://floater.jessejesse.xyz',
+        imageURL: 'https://example.com/image.png',
+        labelTextColor: '#ffffff'
+      });
+    });
+  })();
+</script>
+```
 
 
