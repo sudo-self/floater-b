@@ -5,11 +5,10 @@
 import React, { useState } from 'react';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import { FaGithub } from 'react-icons/fa';
-import BigText from './BigText';
-import Footer from './Footer';
+import BigText from '../BigText';
+import Footer from '../Footer';
 
-import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
-import { generateScriptContent, uploadScript } from './scriptUtils';const FloaterForm = ({ onSubmit }) => {
+
     const [tooltipText, setTooltipText] = useState('Floater B.');
     const [iframeSrc, setIframeSrc] = useState('https://floater-xyz.vercel.app');
     const [imageURL, setImageURL] = useState('https://media2.giphy.com/media/aTjuxBktuWPerLyGBU/200w.webp');
