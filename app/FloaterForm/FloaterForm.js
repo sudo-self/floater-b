@@ -100,7 +100,7 @@ const FloaterForm = () => {
                                 alt="Copy icon"
                                 className="w-8 h-8 mb-1 cursor-pointer"
                             />
-                            <span className="text-green-600">{copied ? 'Floater copied!' : 'Copy Floater?'}</span>
+                            <span className="text-green-600">{copied ? 'copied!' : 'copy?'}</span>
                         </div>
                     </div>
                 )}
