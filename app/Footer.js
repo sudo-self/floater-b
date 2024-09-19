@@ -19,7 +19,7 @@ export default function Footer() {
           </span>
         </a>
       </p>
-      <div className="mt-2"> {/* Adjusted margin-top here */}
+      <div className="mt-2">
         <ApiStatusBadge />
       </div>
       <div className="mt-4">
