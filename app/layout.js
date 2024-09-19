@@ -3,8 +3,7 @@
 import localFont from "next/font/local";
 import ClientScriptComponent from "./clientScriptComponent";
 import "./globals.css";
-import Link from 'next/link';  // Import Link here
-
+import Link from 'next/link'; 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
