@@ -49,7 +49,7 @@ const FloaterForm = () => {
             <div className="bg-black text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
                 <h1 className="text-2xl font-bold mb-4">
                     <a href="/" className="text-green-600">
-                        (⌐■_■)⇒ ⇒ ⇒ 🔘&nbsp;
+                       &nbsp;&nbsp;(⌐■_■) ⇒ ⇒ ⇒ 🔘&nbsp;
                     </a>
                 </h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -59,7 +59,7 @@ const FloaterForm = () => {
                             id="tooltipText"
                             value={tooltipText}
                             onChange={(e) => setTooltipText(e.target.value)}
-                            placeholder="button name"
+                            placeholder="floater name"
                             className="w-full p-2 border border-gray-700 rounded-md bg-transparent placeholder-gray-500 focus:ring-green-600 focus:border-green-600"
                         />
                     </div>
@@ -69,7 +69,7 @@ const FloaterForm = () => {
                             id="iframeSrc"
                             value={iframeSrc}
                             onChange={(e) => setIframeSrc(e.target.value)}
-                            placeholder="button website url"
+                            placeholder="website https://"
                             className="w-full p-2 border border-gray-700 rounded-md bg-transparent placeholder-gray-500 focus:ring-green-600 focus:border-green-600"
                         />
                     </div>
@@ -79,7 +79,7 @@ const FloaterForm = () => {
                             id="imageURL"
                             value={imageURL}
                             onChange={(e) => setImageURL(e.target.value)}
-                            placeholder="button image url"
+                            placeholder="image https://"
                             className="w-full p-2 border border-gray-700 rounded-md bg-transparent placeholder-gray-500 focus:ring-green-600 focus:border-green-600"
                         />
                     </div>
