@@ -43,24 +43,17 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
     rows.push(colors.slice(i, i + 10));
   }
 
-  const handleColorClick = (color) => {
-    if (activeColorInput === "color") {
-      setColor(color);
-    } else if (activeColorInput === "hoverColor") {
-      setHoverColor(color);
-    }
-  };
 const ColorPicker = ({ setColor, setHoverColor, activeColorInput, rows }) => {
   const [linkColor, setLinkColor] = useState('#00ff00'); 
-  const [hoverColor, setHoverStateColor] = useState('#00ff00'); 
+  const [hoverColor, setHoverColorState] = useState('#00ff00'); 
 
   const handleColorClick = (color) => {
     if (activeColorInput === 'color') {
-      setColor(color); 
+      setColor(color);
       setLinkColor(color); 
     } else if (activeColorInput === 'hoverColor') {
-      setHoverColor(color); 
-      setHoverStateColor(color); 
+      setHoverColor(color);
+      setHoverColorState(color);
     }
   };
 
@@ -69,12 +62,12 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput, rows }) => {
       <h3 className="text-sm font-semibold mb-2 text-center font-mono">
         <Link href="/FloaterForm">
           <span
-            style={{ color: linkColor }}
+            style={{ color: linkColor }} 
             className="hover:underline"
             onMouseEnter={(e) => (e.target.style.color = hoverColor)}
-            onMouseLeave={(e) => (e.target.style.color = linkColor)}
+            onMouseLeave={(e) => (e.target.style.color = linkColor)} 
           >
-            Floater Button API Request
+            Floater Button API
           </span>
         </Link>
       </h3>
