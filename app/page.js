@@ -63,10 +63,7 @@ const Home = () => {
     });
   };
 
-
-  
-
-  return (
+ return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <header className="relative p-6 bg-opacity-30 w-full max-w-screen-2xl mx-auto flex items-center justify-between">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-200 flex-grow">
@@ -105,7 +102,7 @@ const Home = () => {
               Google Sign in
             </button>
             <button className="px-4 py-2 bg-gray-800 text-white rounded" onClick={signInWithGithub}>
-              GitHub Sign in 
+              GitHub Sign in
             </button>
           </div>
         ) : (
@@ -132,21 +129,20 @@ const Home = () => {
               />
             </div>
             <div className="mb-4">
-               <input
-        type="text"
-        placeholder="Name:"
-        value={tooltipText} 
-        onChange={(e) => setTooltipText(e.target.value)} 
-        className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none focus:border-green-600"
-      />
-    </div>
+              <input
+                type="text"
+                placeholder="Name:"
+                value={tooltipText}
+                onChange={(e) => setTooltipText(e.target.value)}
+                className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none focus:border-green-600"
+              />
             </div>
             <button
               className={`px-4 py-2 bg-blue-500 text-white rounded ${allFilled ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
               onClick={handleGenerateAndUpload}
               disabled={!allFilled}
             >
-             Create Floater
+              Create Floater
             </button>
             {scriptUrl && (
               <div className="mt-4 flex flex-col items-center">
@@ -164,29 +160,29 @@ const Home = () => {
 
         <div className="flex justify-center mt-8">
           <button
-            onClick={() => setShape(shape === "circle" ? "square" : "circle")}
+            onClick={() => setShape(shape === 'circle' ? 'square' : 'circle')}
             className={`p-2 transition-colors duration-300 text-white border border-gray-950 focus:outline-none
-            ${shape === "circle" ? "bg-green-500 rounded-full" : "bg-gray-800 rounded-none"} relative`}
+            ${shape === 'circle' ? 'bg-green-500 rounded-full' : 'bg-gray-800 rounded-none'} relative`}
             style={{
-              backgroundColor: color || "#4b0082",
-              width: "70px",
-              height: "70px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              backgroundColor: color || '#4b0082',
+              width: '70px',
+              height: '70px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
-            title={`form factor ${shape === "circle" ? "square" : "circle"}`}
+            title={`form factor ${shape === 'circle' ? 'square' : 'circle'}`}
           >
             <span
               className="absolute inset-0"
               style={{
-                backgroundColor: hoverColor || "rgba(255, 255, 255, 0.3)",
+                backgroundColor: hoverColor || 'rgba(255, 255, 255, 0.3)',
                 opacity: 0,
-                transition: "opacity 0.3s",
+                transition: 'opacity 0.3s',
                 zIndex: -1,
               }}
             />
-            {label || (shape === "circle" ? "(■_■)" : "[■_■]")}
+            {label || (shape === 'circle' ? '(■_■)' : '[■_■]')}
           </button>
         </div>
 
@@ -205,4 +201,3 @@ const Home = () => {
 };
 
 export default Home;
-
