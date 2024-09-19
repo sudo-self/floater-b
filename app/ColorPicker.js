@@ -1,4 +1,7 @@
+"use client";
+
 import React from 'react';
+import Link from 'next/link';
 
 const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
   const colors = [
@@ -60,12 +63,11 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
   return (
     <div className="mt-4">
       <h3 className="text-sm font-semibold mb-2 text-center font-mono">
-        <Link href="/FloaterForm">
-          <a className="text-green-400 hover:underline">Floater B. APi Request</a>
-              </Link>
-            </h3>
-
-    
+        <h3 className="text-sm font-semibold mb-2 text-center font-mono">
+  <Link href="/FloaterForm" className="text-green-400 hover:underline">
+    Floater B. API Request
+  </Link>
+</h3>
       <div className="flex flex-col items-center">
         {rows.map((row, rowIndex) => (
           <div key={rowIndex} className="flex gap-2 mb-2">
