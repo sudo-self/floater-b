@@ -1,3 +1,4 @@
+"use client";
 
 import FloaterForm from './FloaterForm';
 
