@@ -38,8 +38,8 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
   ];
 
   const rows = [];
-  for (let i = 0; i < colors.length; i += 10) {
-    rows.push(colors.slice(i, i + 10));
+  for (let i = 0; i < colors.length; i += 5) {
+    rows.push(colors.slice(i, i + 5));
   }
 
   const [linkColor, setLinkColor] = useState('#00ff00');
