@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -97,8 +96,8 @@ const FloaterForm = () => {
                     </button>
                 </form>
                 {data && (
-                    <div className="mt-4 p-4 bg-gray-800 border border-gray-700 rounded-md relative">
-                        <pre className="whitespace-pre-wrap overflow-auto max-h-60">{data}</pre>
+                    <div className="mt-4 p-4 bg-transparent border border-gray-700 rounded-md relative">
+                        <pre className="whitespace-pre-wrap overflow-auto max-h-60 text-green-600">{data}</pre>
                         <div className="mt-2 flex flex-col items-center">
                             <img
                                 onClick={() => copyToClipboard(data)}
@@ -106,7 +105,7 @@ const FloaterForm = () => {
                                 alt="Copy icon"
                                 className="w-8 h-8 mb-1 cursor-pointer"
                             />
-                            <span>{copied ? 'Floater copied!' : 'Copy button'}</span>
+                            <span className="text-green-600">{copied ? 'Floater copied!' : 'Copy button'}</span>
                         </div>
                     </div>
                 )}
@@ -116,6 +115,7 @@ const FloaterForm = () => {
 };
 
 export default FloaterForm;
+
 
 
 
