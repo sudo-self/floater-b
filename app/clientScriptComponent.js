@@ -11,9 +11,9 @@ export default function ClientScriptComponent() {
         strategy="lazyOnload"
       />
       
-      {/* Production */}
+      {/* sudo-self */}
       <Script
-        src="https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/scripts%2F1726742162313-2av8rz84to.js?alt=media&token=417397d9-c286-446a-8bdd-f33986c965e4"
+        src="https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/scripts%2FFloater.js?alt=media&token=54b715e3-aa43-4266-a75a-d4a60b82e46a"
         strategy="lazyOnload"
       />
     </>
