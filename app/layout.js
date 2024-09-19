@@ -27,7 +27,6 @@ export default function RootLayout({ children }) {
           <ul>
             <li>
               <Link href="/FloaterForm">
-                Floater B. APi
               </Link>
             </li>
           </ul>
