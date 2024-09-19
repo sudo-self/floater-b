@@ -1,6 +1,9 @@
-// ./FloaterForm.js
+
 
 "use client";
+
+import React, { useState } from 'react';
+
 
 import React, { useState } from 'react';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
@@ -8,10 +11,10 @@ import { FaGithub } from 'react-icons/fa';
 import BigText from '../BigText';
 import Footer from '../Footer';
 
-
-    const [tooltipText, setTooltipText] = useState('Floater B.');
-    const [iframeSrc, setIframeSrc] = useState('https://floater-xyz.vercel.app');
-    const [imageURL, setImageURL] = useState('https://media2.giphy.com/media/aTjuxBktuWPerLyGBU/200w.webp');
+const FloaterForm = () => {
+    const [tooltipText, setTooltipText] = useState('');
+    const [iframeSrc, setIframeSrc] = useState('');
+    const [imageURL, setImageURL] = useState('');
     const [labelTextColor, setLabelTextColor] = useState('#000000');
     const [data, setData] = useState(null);
 
@@ -27,12 +30,11 @@ import Footer from '../Footer';
                     tooltipText,
                     iframeSrc,
                     imageURL,
-                    labelTextColor
+                    labelTextColor,
                 }),
             });
             const result = await res.json();
             setData(result);
-            if (onSubmit) onSubmit(result);
         } catch (error) {
             console.error('Error:', error);
         }
@@ -42,7 +44,7 @@ import Footer from '../Footer';
         <div>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="tooltipText">name:</label>
+                    <label htmlFor="tooltipText">Name:</label>
                     <input
                         type="text"
                         id="tooltipText"
@@ -51,7 +53,7 @@ import Footer from '../Footer';
                     />
                 </div>
                 <div>
-                    <label htmlFor="iframeSrc">website:</label>
+                    <label htmlFor="iframeSrc">Website:</label>
                     <input
                         type="text"
                         id="iframeSrc"
@@ -60,7 +62,7 @@ import Footer from '../Footer';
                     />
                 </div>
                 <div>
-                    <label htmlFor="imageURL">image:</label>
+                    <label htmlFor="imageURL">Image:</label>
                     <input
                         type="text"
                         id="imageURL"
@@ -69,7 +71,7 @@ import Footer from '../Footer';
                     />
                 </div>
                 <div>
-                    <label htmlFor="labelTextColor">text color:</label>
+                    <label htmlFor="labelTextColor">Text Color:</label>
                     <input
                         type="color"
                         id="labelTextColor"
@@ -77,7 +79,7 @@ import Footer from '../Footer';
                         onChange={(e) => setLabelTextColor(e.target.value)}
                     />
                 </div>
-                <button type="submit">Send APi Request</button>
+                <button type="submit">Send API Request</button>
             </form>
             {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
         </div>
