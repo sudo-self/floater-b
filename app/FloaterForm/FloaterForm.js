@@ -49,7 +49,7 @@ const FloaterForm = () => {
             <div className="bg-black text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
                 <h1 className="text-2xl font-bold mb-4">
                     <a href="/" className="text-green-600">
-                       &nbsp;&nbsp;(⌐■_■) ⇒ ⇒ ⇒ 🔘&nbsp;
+                       &nbsp;&nbsp;&nbsp;&nbsp;_[■_■]_&nbsp;
                     </a>
                 </h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
