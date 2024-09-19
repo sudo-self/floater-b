@@ -1,7 +1,5 @@
 <div align="center">
     
-## Floater Buttons!
-
 [![API Status](https://img.shields.io/endpoint?url=https://floater.jessejesse.xyz/api/floater)](https://floater.jessejesse.xyz/api/floater)
 
 [![Node.js Package](https://github.com/sudo-self/floater-buttons/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/sudo-self/floater-buttons/actions/workflows/npm-publish.yml)
