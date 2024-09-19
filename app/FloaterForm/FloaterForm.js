@@ -24,12 +24,12 @@ const FloaterForm = () => {
                     labelTextColor
                 }),
             });
-            const result = await res.json();
-            setData(result);
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
+           const result = await res.text(); 
+        setData(result);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
 
     return (
         <div className="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
