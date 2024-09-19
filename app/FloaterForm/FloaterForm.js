@@ -1,6 +1,9 @@
+// /app/FloaterForm/FloaterForm.js
+
 "use client";
 
 import React, { useState } from 'react';
+import '../../globals.css'; 
 
 const FloaterForm = () => {
     const [tooltipText, setTooltipText] = useState('');
@@ -53,7 +56,7 @@ const FloaterForm = () => {
                         id="tooltipText"
                         value={tooltipText}
                         onChange={(e) => setTooltipText(e.target.value)}
-                        className="w-full p-2 bg-gray-800 border border-gray-700 rounded-md text-white"
+                        className="w-full p-2 border border-gray-700 rounded-md text-white bg-transparent"
                     />
                 </div>
                 <div>
@@ -63,7 +66,7 @@ const FloaterForm = () => {
                         id="iframeSrc"
                         value={iframeSrc}
                         onChange={(e) => setIframeSrc(e.target.value)}
-                        className="w-full p-2 bg-gray-800 border border-gray-700 rounded-md text-white"
+                        className="w-full p-2 border border-gray-700 rounded-md text-white bg-transparent"
                     />
                 </div>
                 <div>
@@ -73,7 +76,7 @@ const FloaterForm = () => {
                         id="imageURL"
                         value={imageURL}
                         onChange={(e) => setImageURL(e.target.value)}
-                        className="w-full p-2 bg-gray-800 border border-gray-700 rounded-md text-white"
+                        className="w-full p-2 border border-gray-700 rounded-md text-white bg-transparent"
                     />
                 </div>
                 <div>
@@ -83,7 +86,7 @@ const FloaterForm = () => {
                         id="labelTextColor"
                         value={labelTextColor}
                         onChange={(e) => setLabelTextColor(e.target.value)}
-                        className="w-full p-2 bg-gray-800 border border-gray-700 rounded-md"
+                        className="w-full p-2 border border-gray-700 rounded-md bg-transparent"
                     />
                 </div>
                 <button
@@ -112,3 +115,4 @@ const FloaterForm = () => {
 };
 
 export default FloaterForm;
+
