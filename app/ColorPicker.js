@@ -2,8 +2,22 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import ApiStatusBadge from './ApiStatusBadge';
 
 const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
+  const [linkColor, setLinkColor] = useState('#00ff00');
+  const [hoverColor, setHoverStateColor] = useState('#00ff00');
+
+  const handleColorClick = (color) => {
+    if (activeColorInput === 'color') {
+      setColor(color);
+      setLinkColor(color);
+    } else if (activeColorInput === 'hoverColor') {
+      setHoverColor(color);
+      setHoverStateColor(color);
+    }
+  };
+
   const colors = [
     { name: "Black", hex: "#000000" },
     { name: "White", hex: "#ffffff" },
@@ -42,51 +56,36 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
     rows.push(colors.slice(i, i + 5));
   }
 
-  const [linkColor, setLinkColor] = useState('#00ff00');
-  const [hoverColor, setHoverStateColor] = useState('#00ff00');
-
-  const handleColorClick = (color) => {
-    if (activeColorInput === 'color') {
-      setColor(color);
-      setLinkColor(color);
-    } else if (activeColorInput === 'hoverColor') {
-      setHoverColor(color);
-      setHoverStateColor(color);
-    }
-  };
-
-  return (
-    <div className="mt-4">
-      <h3 className="text-sm font-semibold mb-2 text-center font-mono">
-        <Link href="/FloaterForm">
-          <span
-            style={{ color: linkColor }}
-            className="hover:underline"
-            onMouseEnter={(e) => (e.target.style.color = hoverColor)}
-            onMouseLeave={(e) => (e.target.style.color = linkColor)}
-          >
-          send api create request 
-          </span>
-        </Link>
-      </h3>
-      <div className="flex flex-col items-center">
-        {rows.map((row, rowIndex) => (
-          <div key={rowIndex} className="flex gap-2 mb-2">
-            {row.map(({ name, hex }) => (
-              <div
-                key={hex}
-                title={name}
-                style={{ backgroundColor: hex }}
-                className="w-10 h-10 rounded cursor-pointer border border-gray-300"
-                onClick={() => handleColorClick(hex)}
-              />
+    return (
+        <div className="mt-4">
+            <h3 className="text-sm font-semibold mb-2 text-center font-mono flex items-center justify-center space-x-2">
+                  <ApiStatusBadge />
+          
+            </h3>
+          <div className="flex flex-col items-center mb-4">
+            {rows.map((row, rowIndex) => (
+              <div key={rowIndex} className="flex gap-2 mb-2">
+                {row.map(({ name, hex }) => (
+                  <div
+                    key={hex}
+                    title={name}
+                    style={{ backgroundColor: hex }}
+                    className="w-10 h-10 rounded cursor-pointer border border-gray-300 dark:border-gray-700"
+                    onClick={() => handleColorClick(hex)}
+                  />
+                ))}
+              </div>
             ))}
           </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+          <div className="text-center">
+            <pre className="bg-gray-100 dark:bg-gray-800 border border-transparent p-2 rounded">
+              <code className="text-gray-800 dark:text-gray-200">
+            {`💻 npm i floater-xyz`}
+              </code>
+            </pre>
+          </div>
+        </div>
+      );
+    };
 
-export default ColorPicker;
-
+    export default ColorPicker;

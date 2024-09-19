@@ -1,6 +1,5 @@
 "use client";
 
-import ApiStatusBadge from './ApiStatusBadge'; 
 
 export default function Footer() {
   return (
@@ -19,9 +18,6 @@ export default function Footer() {
           </span>
         </a>
       </p>
-      <div className="mt-2">
-        <ApiStatusBadge />
-      </div>
     </div>
   );
 }
