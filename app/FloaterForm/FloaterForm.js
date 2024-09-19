@@ -96,7 +96,7 @@ const FloaterForm = () => {
                         type="submit"
                         className="w-full py-2 bg-green-800 hover:bg-green-900 text-white font-bold rounded-md"
                     >
-                        send API button request
+                        Send Request
                     </button>
                 </form>
                 {data && (
