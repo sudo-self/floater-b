@@ -19,8 +19,21 @@ export default function Footer() {
           </span>
         </a>
       </p>
+      <div className="mt-2"> {/* Adjusted margin-top here */}
+        <ApiStatusBadge />
+      </div>
       <div className="mt-4">
-        <ApiStatusBadge /> 
+        <a
+          href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsudo-self%2Ffloater-b"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://vercel.com/button"
+            alt="Deploy with Vercel"
+            className="h-8" // Adjusted height here
+          />
+        </a>
       </div>
     </div>
   );
