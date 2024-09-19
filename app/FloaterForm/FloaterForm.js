@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -26,8 +25,8 @@ const FloaterForm = () => {
                     labelTextColor
                 }),
             });
-            const result = await res.text(); 
-            setData(result.trim()); 
+            const result = await res.text();
+            setData(result.trim());
         } catch (error) {
             console.error('Error:', error);
             setData('Error occurred. Please check the console for details.');
@@ -38,13 +37,13 @@ const FloaterForm = () => {
         navigator.clipboard.writeText(text)
             .then(() => {
                 setCopied(true);
-                setTimeout(() => setCopied(false), 2000); 
+                setTimeout(() => setCopied(false), 2000);
             })
             .catch(err => console.error('Failed to copy:', err));
     };
 
     return (
-        <div className="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
+        <div className="bg-black text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
             <h1 className="text-2xl font-bold mb-4">Floater B. API Demo</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
@@ -84,14 +83,14 @@ const FloaterForm = () => {
                         id="labelTextColor"
                         value={labelTextColor}
                         onChange={(e) => setLabelTextColor(e.target.value)}
-                        className="w-full p-2 bg-gray-800 border border-gray-700 rounded-md text-white"
+                        className="w-full p-2 bg-gray-800 border border-gray-700 rounded-md"
                     />
                 </div>
                 <button
                     type="submit"
                     className="w-full py-2 bg-green-800 hover:bg-green-900 text-white font-bold rounded-md"
                 >
-                    Send floater api request
+                    Send Floater API Request
                 </button>
             </form>
             {data && (
