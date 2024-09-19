@@ -14,7 +14,7 @@ const ApiStatusBadge = () => {
         <img
           src="https://img.shields.io/endpoint?url=https://floater.jessejesse.xyz/api/floater"
           alt="Floater API Status"
-          className="h-4"
+          className="h-2"
         />
       </a>
     </div>
@@ -22,4 +22,5 @@ const ApiStatusBadge = () => {
 };
 
 export default ApiStatusBadge;
+
 
