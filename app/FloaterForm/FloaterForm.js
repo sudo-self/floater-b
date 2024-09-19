@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import '../globals.css'; 
+import Footer from '../Footer';  
 
 const FloaterForm = () => {
     const [tooltipText, setTooltipText] = useState('');
@@ -47,7 +48,7 @@ const FloaterForm = () => {
         <div className="bg-black min-h-screen p-6">
             <div className="bg-black text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
                 <h1 className="text-2xl font-bold mb-4">
-                    <a href="/" className="text-green-600">
+                    <a href="/home" className="text-green-600">
                         &nbsp;&nbsp;&nbsp;&nbsp;(⌐■_■)_🔘 ⇒ ⭘ ⇒ 🔘_(■_■)&nbsp;
                     </a>
                 </h1>
@@ -59,7 +60,7 @@ const FloaterForm = () => {
                             value={tooltipText}
                             onChange={(e) => setTooltipText(e.target.value)}
                             placeholder="name:"
-                            className="w-full p-2 border border-gray-700 rounded-md text-white bg-transparent placeholder-gray-200"
+                            className="w-full p-2 border border-gray-700 rounded-md bg-transparent placeholder-gray-500 focus:ring-green-600 focus:border-green-600"
                         />
                     </div>
                     <div>
@@ -69,7 +70,7 @@ const FloaterForm = () => {
                             value={iframeSrc}
                             onChange={(e) => setIframeSrc(e.target.value)}
                             placeholder="website"
-                            className="w-full p-2 border border-gray-700 rounded-md text-white bg-transparent placeholder-gray-200"
+                            className="w-full p-2 border border-gray-700 rounded-md bg-transparent placeholder-gray-500 focus:ring-green-600 focus:border-green-600"
                         />
                     </div>
                     <div>
@@ -79,7 +80,7 @@ const FloaterForm = () => {
                             value={imageURL}
                             onChange={(e) => setImageURL(e.target.value)}
                             placeholder="image:"
-                            className="w-full p-2 border border-gray-700 rounded-md text-white bg-transparent placeholder-gray-200"
+                            className="w-full p-2 border border-gray-700 rounded-md bg-transparent placeholder-gray-500 focus:ring-green-600 focus:border-green-600"
                         />
                     </div>
                     <div>
@@ -88,14 +89,14 @@ const FloaterForm = () => {
                             id="labelTextColor"
                             value={labelTextColor}
                             onChange={(e) => setLabelTextColor(e.target.value)}
-                            className="w-full p-2 border border-gray-700 rounded-md bg-transparent"
+                            className="w-full p-2 border border-gray-700 rounded-md bg-transparent focus:ring-green-600"
                         />
                     </div>
                     <button
                         type="submit"
                         className="w-full py-2 bg-green-800 hover:bg-green-900 text-white font-bold rounded-md"
                     >
-                        Send Floater API Request
+                        send API button request
                     </button>
                 </form>
                 {data && (
@@ -108,16 +109,18 @@ const FloaterForm = () => {
                                 alt="Copy icon"
                                 className="w-8 h-8 mb-1 cursor-pointer"
                             />
-                            <span className="text-green-600">{copied ? 'Floater copied!' : 'Copy button'}</span>
+                            <span className="text-green-600">{copied ? 'Floater copied!' : 'Copy Floater?'}</span>
                         </div>
                     </div>
                 )}
             </div>
+            <Footer /> 
         </div>
     );
 };
 
 export default FloaterForm;
+
 
 
 
