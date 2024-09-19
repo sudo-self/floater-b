@@ -57,7 +57,7 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
     <div className="mt-4">
       <h3 className="text-sm font-semibold mb-2 text-center font-mono">
         <Link href="/FloaterForm" className="text-green-400 hover:underline">
-          Floater B. API Request
+          Floater Button API Request
         </Link>
       </h3>
       <div className="flex flex-col items-center">
