@@ -59,7 +59,7 @@ const FloaterForm = () => {
                             id="tooltipText"
                             value={tooltipText}
                             onChange={(e) => setTooltipText(e.target.value)}
-                            placeholder="name:"
+                            placeholder="button name"
                             className="w-full p-2 border border-gray-700 rounded-md bg-transparent placeholder-gray-500 focus:ring-green-600 focus:border-green-600"
                         />
                     </div>
@@ -69,7 +69,7 @@ const FloaterForm = () => {
                             id="iframeSrc"
                             value={iframeSrc}
                             onChange={(e) => setIframeSrc(e.target.value)}
-                            placeholder="website"
+                            placeholder="button website url"
                             className="w-full p-2 border border-gray-700 rounded-md bg-transparent placeholder-gray-500 focus:ring-green-600 focus:border-green-600"
                         />
                     </div>
@@ -79,7 +79,7 @@ const FloaterForm = () => {
                             id="imageURL"
                             value={imageURL}
                             onChange={(e) => setImageURL(e.target.value)}
-                            placeholder="image:"
+                            placeholder="button image url"
                             className="w-full p-2 border border-gray-700 rounded-md bg-transparent placeholder-gray-500 focus:ring-green-600 focus:border-green-600"
                         />
                     </div>
