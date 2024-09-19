@@ -8,7 +8,7 @@ export default function Footer() {
       <p className="text-quaternary">
         &nbsp;&nbsp;&nbsp;&#10085;&nbsp;
         <a
-          className="ml-1 text-secondary text-zinc-500 hover:text-primary group"
+          className="ml-1 text-secondary text-green-600 hover:text-primary group"
           href="https://jessejesse.xyz"
           target="_blank"
           rel="noopener noreferrer"
@@ -21,19 +21,6 @@ export default function Footer() {
       </p>
       <div className="mt-2">
         <ApiStatusBadge />
-      </div>
-      <div className="mt-4">
-        <a
-          href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsudo-self%2Ffloater-b"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="https://vercel.com/button"
-            alt="Deploy with Vercel"
-            className="h-8"
-          />
-        </a>
       </div>
     </div>
   );
