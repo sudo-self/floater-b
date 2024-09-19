@@ -20,6 +20,7 @@ const Home = () => {
   const [scriptUrl, setScriptUrl] = useState("");
   const [copied, setCopied] = useState(false);
   const [allFilled, setAllFilled] = useState(false);
+  const [tooltipText, setTooltipText] = useState(''); 
   const user = useAuth();
 
   useEffect(() => {
@@ -61,6 +62,9 @@ const Home = () => {
       console.error('Failed to copy text:', err);
     });
   };
+
+
+  
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -128,13 +132,14 @@ const Home = () => {
               />
             </div>
             <div className="mb-4">
-              <input
-                type="text"
-                placeholder="Name:"
-                value={tooltipText}
-                onChange={(e) => setLabel(e.target.value)}
-                className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
-              />
+               <input
+        type="text"
+        placeholder="Name:"
+        value={tooltipText} 
+        onChange={(e) => setTooltipText(e.target.value)} 
+        className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none focus:border-green-600"
+      />
+    </div>
             </div>
             <button
               className={`px-4 py-2 bg-blue-500 text-white rounded ${allFilled ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
