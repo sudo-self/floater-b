@@ -31,7 +31,7 @@ export default function Footer() {
           <img
             src="https://vercel.com/button"
             alt="Deploy with Vercel"
-            className="h-8" // Adjusted height here
+            className="h-8"
           />
         </a>
       </div>
