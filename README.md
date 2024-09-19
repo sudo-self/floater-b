@@ -17,7 +17,7 @@ npx floater-xyz
 curl -X POST https://floater.jessejesse.xyz/api/floater \
    -H "Content-Type: application/json" \
    -d '{
-         "tooltipText": "My Custom Tooltip",
+         "tooltipText": "A Production Framework",
          "iframeSrc": "https://nextjs.org",
          "imageURL": "https://nextjs.org/favicon.ico",
          "labelTextColor": "#000000"
