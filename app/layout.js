@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import ClientScriptComponent from './clientScriptComponent';
 import "./globals.css";
+import Link from 'next/link';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,10 +23,34 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <nav>
+          <ul>
+            <li>
+              <Link href="/FloaterForm">
+                Floater API
+              </Link>
+            </li>
+          </ul>
+        </nav>
         {children}
         <ClientScriptComponent />
       </body>
     </html>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
