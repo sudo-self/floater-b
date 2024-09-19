@@ -47,7 +47,7 @@ const FloaterForm = () => {
     return (
         <div className="bg-black min-h-screen p-6">
             <div className="bg-black text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
-                <h1 className="text-2xl font-bold mb-4">&nbsp;&nbsp;&nbsp;(⌐■_■)_🔘</h1>
+                <h1 className="text-2xl font-bold mb-4">&nbsp;&nbsp;&nbsp;(⌐■_■)_🔘 ⇒ ⭘ ⇒ 🔘_(■_■)&nbsp;</h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <label htmlFor="tooltipText" className="block text-sm font-medium mb-1">Name:</label>
