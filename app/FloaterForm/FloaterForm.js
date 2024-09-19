@@ -83,15 +83,6 @@ const FloaterForm = () => {
                             className="w-full p-2 border border-gray-700 rounded-md bg-transparent placeholder-gray-500 focus:ring-green-600 focus:border-green-600"
                         />
                     </div>
-                    <div>
-                        <input
-                            type="color"
-                            id="labelTextColor"
-                            value={labelTextColor}
-                            onChange={(e) => setLabelTextColor(e.target.value)}
-                            className="w-full p-2 border border-gray-700 rounded-md bg-transparent focus:ring-green-600"
-                        />
-                    </div>
                     <button
                         type="submit"
                         className="w-full py-2 bg-green-800 hover:bg-green-900 text-white font-bold rounded-md"
