@@ -225,8 +225,6 @@ export async function POST(req) {
 }
 
 
-
-
 /*
  
  curl -X POST https://floater.jessejesse.xyz/api/floater \
@@ -234,23 +232,9 @@ export async function POST(req) {
    -d '{
          "tooltipText": "Floater B.",
          "iframeSrc": "https://floater.jessejesse.xyz",
-         "imageURL": "https://floater.jessejesse.xyz/favicon-32x32.png",
+         "imageURL": "https://media2.giphy.com/media/LWYj2JxzlJteRcgWHX/200.webp",
          "labelTextColor": "#FFFFFF"
        }'
 
  */
 
-
-
-/*
- 
- curl -X POST https://floater.jessejesse.xyz/api/floater \
-   -H "Content-Type: application/json" \
-   -d '{
-         "tooltipText": "Floater B.",
-         "iframeSrc": "https://floater.jessejesse.xyz",
-         "imageURL": "https://floater.jessejesse.xyz/favicon-32x32.png",
-         "labelTextColor": "#FFFFFF"
-       }'
-
- */
