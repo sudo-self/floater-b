@@ -49,37 +49,36 @@ const FloaterForm = () => {
                 <h1 className="text-2xl font-bold mb-4">&nbsp;&nbsp;&nbsp;(⌐■_■)_🔘 ⇒ ⭘ ⇒ 🔘_(■_■)&nbsp;</h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label htmlFor="tooltipText" className="block text-sm font-medium mb-1">Name:</label>
                         <input
                             type="text"
                             id="tooltipText"
                             value={tooltipText}
                             onChange={(e) => setTooltipText(e.target.value)}
-                            className="w-full p-2 border border-gray-700 rounded-md text-white bg-transparent"
+                            placeholder="Name"
+                            className="w-full p-2 border border-gray-700 rounded-md text-white bg-transparent placeholder-gray-200"
                         />
                     </div>
                     <div>
-                        <label htmlFor="iframeSrc" className="block text-sm font-medium mb-1">Website:</label>
                         <input
                             type="text"
                             id="iframeSrc"
                             value={iframeSrc}
                             onChange={(e) => setIframeSrc(e.target.value)}
-                            className="w-full p-2 border border-gray-700 rounded-md text-white bg-transparent"
+                            placeholder="Website"
+                            className="w-full p-2 border border-gray-700 rounded-md text-white bg-transparent placeholder-gray-200"
                         />
                     </div>
                     <div>
-                        <label htmlFor="imageURL" className="block text-sm font-medium mb-1">Image:</label>
                         <input
                             type="text"
                             id="imageURL"
                             value={imageURL}
                             onChange={(e) => setImageURL(e.target.value)}
-                            className="w-full p-2 border border-gray-700 rounded-md text-white bg-transparent"
+                            placeholder="Image"
+                            className="w-full p-2 border border-gray-700 rounded-md text-white bg-transparent placeholder-gray-200"
                         />
                     </div>
                     <div>
-                        <label htmlFor="labelTextColor" className="block text-sm font-medium mb-1">Text Color:</label>
                         <input
                             type="color"
                             id="labelTextColor"
@@ -115,6 +114,7 @@ const FloaterForm = () => {
 };
 
 export default FloaterForm;
+
 
 
 
