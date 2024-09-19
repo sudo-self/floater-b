@@ -65,7 +65,7 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
             onMouseEnter={(e) => (e.target.style.color = hoverColor)}
             onMouseLeave={(e) => (e.target.style.color = linkColor)}
           >
-          send Floater API request
+          send api create request 
           </span>
         </Link>
       </h3>
