@@ -1,17 +1,12 @@
 // ./FloaterForm.js
 
 import React, { useState } from 'react';
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
-import { FaGithub } from 'react-icons/fa';
-import BigText from './BigText';
-import Footer from './Footer';
 
-import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
-import { generateScriptContent, uploadScript } from './scriptUtils';const FloaterForm = ({ onSubmit }) => {
-    const [tooltipText, setTooltipText] = useState('Floater B.');
-    const [iframeSrc, setIframeSrc] = useState('https://floater-xyz.vercel.app');
-    const [imageURL, setImageURL] = useState('https://media2.giphy.com/media/aTjuxBktuWPerLyGBU/200w.webp');
-    const [labelTextColor, setLabelTextColor] = useState('#000000');
+const FloaterForm = ({ onSubmit }) => {
+    const [tooltipText, setTooltipText] = useState('');
+    const [iframeSrc, setIframeSrc] = useState('');
+    const [imageURL, setImageURL] = useState('');
+    const [labelTextColor, setLabelTextColor] = useState('#ffffff');
     const [data, setData] = useState(null);
 
     const handleSubmit = async (event) => {
@@ -39,9 +34,10 @@ import { generateScriptContent, uploadScript } from './scriptUtils';const Floate
 
     return (
         <div>
+            <h1>Floater Form</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="tooltipText">name:</label>
+                    <label htmlFor="tooltipText">Name:</label>
                     <input
                         type="text"
                         id="tooltipText"
@@ -50,7 +46,7 @@ import { generateScriptContent, uploadScript } from './scriptUtils';const Floate
                     />
                 </div>
                 <div>
-                    <label htmlFor="iframeSrc">website:</label>
+                    <label htmlFor="iframeSrc">Website URL:</label>
                     <input
                         type="text"
                         id="iframeSrc"
@@ -59,7 +55,7 @@ import { generateScriptContent, uploadScript } from './scriptUtils';const Floate
                     />
                 </div>
                 <div>
-                    <label htmlFor="imageURL">image:</label>
+                    <label htmlFor="imageURL">Image URL:</label>
                     <input
                         type="text"
                         id="imageURL"
@@ -68,7 +64,7 @@ import { generateScriptContent, uploadScript } from './scriptUtils';const Floate
                     />
                 </div>
                 <div>
-                    <label htmlFor="labelTextColor">text color:</label>
+                    <label htmlFor="labelTextColor">Text Color:</label>
                     <input
                         type="color"
                         id="labelTextColor"
@@ -76,7 +72,7 @@ import { generateScriptContent, uploadScript } from './scriptUtils';const Floate
                         onChange={(e) => setLabelTextColor(e.target.value)}
                     />
                 </div>
-                <button type="submit">Send APi Request</button>
+                <button type="submit">Send API Request</button>
             </form>
             {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
         </div>
@@ -84,3 +80,4 @@ import { generateScriptContent, uploadScript } from './scriptUtils';const Floate
 };
 
 export default FloaterForm;
+
