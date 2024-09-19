@@ -19,31 +19,29 @@ curl -X POST https://floater.jessejesse.xyz/api/floater \
    -d '{
          "tooltipText": "Floater B.",
          "iframeSrc": "https://floater.jessejesse.xyz",
-         "imageURL": "https://floater.jessejesse.xyz/favicon-32x32.png",
+         "imageURL": "https://media2.giphy.com/media/aTjuxBktuWPerLyGBU/200w.webp",
          "labelTextColor": "#FFFFFF"
        }'
 ```
 
-## embed
+## test api
 
 ```
-<script>
-  // Floater.js from the server
-  (function() {
-    class FloaterButton {
-    
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floater Button Test</title>
+</head>
+<body>
+    <h1>Testing Floater Button</h1>
+    <script>
+      // PASTE API RETURN  HERE //
+    </script>
+</body>
+</html>
 
-    document.addEventListener('DOMContentLoaded', () => {
-      new FloaterButton({
-        tooltipText: 'Floater B.',
-        iframeSrc: 'https://floater.jessejesse.xyz',
-        imageURL: 'https://example.com/image.png',
-        labelTextColor: '#ffffff'
-      });
-    });
-  })();
-</script>
 ```
 
-
+## 
