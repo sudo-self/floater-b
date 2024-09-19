@@ -58,10 +58,6 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
 
     return (
         <div className="mt-4">
-            <h3 className="text-sm font-semibold mb-2 text-center font-mono flex items-center justify-center space-x-2">
-                  <ApiStatusBadge />
-          
-            </h3>
           <div className="flex flex-col items-center mb-4">
             {rows.map((row, rowIndex) => (
               <div key={rowIndex} className="flex gap-2 mb-2">
@@ -77,13 +73,9 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
               </div>
             ))}
           </div>
-          <div className="text-center">
-            <pre className="bg-gray-100 dark:bg-gray-800 border border-transparent p-2 rounded">
-              <code className="text-gray-800 dark:text-gray-200">
-            {`💻 npm i floater-xyz`}
-              </code>
-            </pre>
-          </div>
+              <h3 className="text-sm font-semibold mb-2 text-center font-mono flex items-center justify-center space-x-2">
+                  <ApiStatusBadge />
+              </h3>
         </div>
       );
     };
