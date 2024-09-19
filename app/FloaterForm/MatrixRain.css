@@ -1,0 +1,60 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background-color: black;
+}
+
+.matrix-rain-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  overflow: hidden;
+}
+
+.matrix-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.matrix-rain .matrix-column {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1em;
+  white-space: nowrap;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+  color: rgba(0, 255, 0, 0.7); /* Green color with transparency */
+  animation: matrixFall linear infinite;
+}
+
+.matrix-rain .matrix-column span {
+  display: block;
+  opacity: 0;
+  animation: fade 0.8s linear infinite;
+}
+
+/* Define animation for falling */
+@keyframes matrixFall {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+/* Random fading of characters */
+@keyframes fade {
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 0; }
+}

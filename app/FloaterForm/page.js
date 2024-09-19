@@ -1,11 +1,14 @@
 "use client";
 
 import FloaterForm from './FloaterForm';
+import MatrixRain from './MatrixRain';
+import './MatrixRain.css'; 
 
 export default function FloaterFormPage() {
   return (
-    <div>
+    <div className="matrix-rain-container">
       <FloaterForm />
+      <MatrixRain />
     </div>
   );
 }

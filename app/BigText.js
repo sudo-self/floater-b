@@ -1,9 +1,11 @@
 // /app/BigText.js
 
+"use client";
 
 import React from 'react';
 import { useInterval } from 'react-use';
 import classNames from './ClassNames';
+import Link from 'next/link';
 
 function BigText({ slides }) {
   const [currentSlide, setSlide] = React.useState(0);
