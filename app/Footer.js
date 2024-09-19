@@ -1,3 +1,7 @@
+"use client";
+
+import ApiStatusBadge from './ApiStatusBadge'; 
+
 export default function Footer() {
   return (
     <div className="flex flex-col items-center mx-auto my-16 text-center">
@@ -15,18 +19,11 @@ export default function Footer() {
           </span>
         </a>
       </p>
-      <a
-        href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsudo-self%2Ffloater-b"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          src="https://vercel.com/button"
-          alt="Deploy with Vercel"
-          className="mt-4 align-middle"
-        />
-      </a>
+      <div className="mt-4">
+        <ApiStatusBadge /> 
+      </div>
     </div>
   );
 }
+
 
