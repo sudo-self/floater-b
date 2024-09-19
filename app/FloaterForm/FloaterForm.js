@@ -1,8 +1,7 @@
+
 "use client";
 
 import React, { useState } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { Icon } from '@iconify/react'; 
 
 const FloaterForm = () => {
     const [tooltipText, setTooltipText] = useState('');
@@ -10,6 +9,7 @@ const FloaterForm = () => {
     const [imageURL, setImageURL] = useState('');
     const [labelTextColor, setLabelTextColor] = useState('#FFFFFF');
     const [data, setData] = useState('');
+    const [copied, setCopied] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -32,6 +32,15 @@ const FloaterForm = () => {
             console.error('Error:', error);
             setData('Error occurred. Please check the console for details.');
         }
+    };
+
+    const copyToClipboard = (text) => {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000); 
+            })
+            .catch(err => console.error('Failed to copy:', err));
     };
 
     return (
@@ -82,17 +91,21 @@ const FloaterForm = () => {
                     type="submit"
                     className="w-full py-2 bg-green-800 hover:bg-green-900 text-white font-bold rounded-md"
                 >
-                    Send Floater B. API Request
+                    Send floater api request
                 </button>
             </form>
             {data && (
                 <div className="mt-4 p-4 bg-gray-800 border border-gray-700 rounded-md relative">
                     <pre className="whitespace-pre-wrap overflow-auto max-h-60">{data}</pre>
-                    <CopyToClipboard text={data}>
-                        <button className="absolute top-2 right-2 p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md">
-                            <Icon icon="mdi:content-copy" width={24} height={24} />
-                        </button>
-                    </CopyToClipboard>
+                    <div className="mt-2 flex flex-col items-center">
+                        <img
+                            onClick={() => copyToClipboard(data)}
+                            src="https://api.iconify.design/ic:outline-copy-all.svg?color=%23929292"
+                            alt="Copy icon"
+                            className="w-8 h-8 mb-1 cursor-pointer"
+                        />
+                        <span>{copied ? 'Floater copied!' : 'Copy button'}</span>
+                    </div>
                 </div>
             )}
         </div>
