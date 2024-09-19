@@ -1,3 +1,8 @@
+"use client";
+
+import { ref, uploadString, getDownloadURL } from 'firebase/storage';
+import { storage } from './firebase';
+
 const generateUniqueFilename = () => {
   const timestamp = Date.now();
   const randomString = Math.random().toString(36).substring(2, 12);
@@ -11,7 +16,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
 (function() {
   document.addEventListener('DOMContentLoaded', function() {
     var style = document.createElement('style');
-    style.innerHTML = `
+    style.innerHTML = \`
       .${uniqueId}-floating-button {
         position: fixed;
         bottom: 20px;
@@ -90,7 +95,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       .${uniqueId}-tooltip.visible {
         opacity: 1;
       }
-    `;
+    \`;
     document.head.appendChild(style);
 
     // Create the button
@@ -107,10 +112,10 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
     var popup = document.createElement('div');
     popup.id = '${uniqueId}-popup';
     popup.className = '${uniqueId}-popup';
-    popup.innerHTML = `
+    popup.innerHTML = \`
       <button class="${uniqueId}-close-button" onclick="closePopup('${uniqueId}')">×</button>
       <iframe src="${iframeUrl}" title="Floater Content"></iframe>
-    `;
+    \`;
     document.body.appendChild(popup);
 
     // Create the tooltip
@@ -160,8 +165,8 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       if (isDragging) {
         const newLeft = e.clientX - offsetX;
         const newTop = e.clientY - offsetY;
-        button.style.left = `${newLeft}px`;
-        button.style.top = `${newTop}px`;
+        button.style.left = \`\${newLeft}px\`;
+        button.style.top = \`\${newTop}px\`;
       }
     }
 
@@ -176,8 +181,8 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
         const touch = e.touches[0];
         const newLeft = touch.clientX - offsetX;
         const newTop = touch.clientY - offsetY;
-        button.style.left = `${newLeft}px`;
-        button.style.top = `${newTop}px`;
+        button.style.left = \`\${newLeft}px\`;
+        button.style.top = \`\${newTop}px\`;
       }
     }
 
@@ -193,6 +198,9 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       startDrag(e);
     });
   })();
+`;
+
+};
 
 export const uploadScript = async (scriptContent) => {
   try {
@@ -216,4 +224,5 @@ export const appendScriptToHead = (scriptUrl) => {
   script.async = true;
   document.head.appendChild(script);
 };
+
 
