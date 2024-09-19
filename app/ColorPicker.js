@@ -38,8 +38,6 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
   { "name": "Burlywood", "hex": "#DEB887" }
 ]
 
-
-
   const rows = [];
   for (let i = 0; i < colors.length; i += 10) {
     rows.push(colors.slice(i, i + 10));
@@ -52,12 +50,32 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
       setHoverColor(color);
     }
   };
+const ColorPicker = ({ setColor, setHoverColor, activeColorInput, rows }) => {
+  const [linkColor, setLinkColor] = useState('#00ff00'); 
+  const [hoverColor, setHoverStateColor] = useState('#00ff00'); 
+
+  const handleColorClick = (color) => {
+    if (activeColorInput === 'color') {
+      setColor(color); 
+      setLinkColor(color); 
+    } else if (activeColorInput === 'hoverColor') {
+      setHoverColor(color); 
+      setHoverStateColor(color); 
+    }
+  };
 
   return (
     <div className="mt-4">
       <h3 className="text-sm font-semibold mb-2 text-center font-mono">
-        <Link href="/FloaterForm" className="text-green-400 hover:underline">
-          Floater Button API Request
+        <Link href="/FloaterForm">
+          <span
+            style={{ color: linkColor }}
+            className="hover:underline"
+            onMouseEnter={(e) => (e.target.style.color = hoverColor)}
+            onMouseLeave={(e) => (e.target.style.color = linkColor)}
+          >
+            Floater Button API Request
+          </span>
         </Link>
       </h3>
       <div className="flex flex-col items-center">
@@ -80,4 +98,3 @@ const ColorPicker = ({ setColor, setHoverColor, activeColorInput }) => {
 };
 
 export default ColorPicker;
-
