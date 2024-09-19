@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "fancy-floaters",
+    "public": "public",
+    ...
+  }
+}
