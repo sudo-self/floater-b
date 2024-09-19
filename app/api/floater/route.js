@@ -225,6 +225,22 @@ export async function POST(req) {
 }
 
 
+export async function GET(req) {
+  return new Response(JSON.stringify({
+    schemaVersion: 1,
+    label: 'Floater API',
+    message: 'Operational',  
+    color: 'green',  
+  }), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}
+
+
+
 /*
  
  curl -X POST https://floater.jessejesse.xyz/api/floater \
