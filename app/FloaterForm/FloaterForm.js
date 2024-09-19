@@ -3,7 +3,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import '../../globals.css'; 
+import '../globals.css'; 
 
 const FloaterForm = () => {
     const [tooltipText, setTooltipText] = useState('');
