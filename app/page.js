@@ -8,7 +8,7 @@ import Footer from './Footer';
 import ColorPicker from './ColorPicker';
 import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
 import { generateScriptContent, uploadScript } from './scriptUtils';
-import FloatingButton from './FloatingButton'; 
+import FloatingButton from './FloatingButton';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -21,7 +21,7 @@ const Home = () => {
   const [scriptUrl, setScriptUrl] = useState("");
   const [copied, setCopied] = useState(false);
   const [allFilled, setAllFilled] = useState(false);
-  const [tooltipText, setTooltipText] = useState(''); 
+  const [tooltipText, setTooltipText] = useState('');
   const user = useAuth();
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const Home = () => {
 
     try {
       const uploadedScriptUrl = await uploadScript(scriptContent);
-      setScriptUrl(uploadedScriptUrl); 
+      setScriptUrl(uploadedScriptUrl);
     } catch (error) {
       console.error('Error uploading script:', error);
     }
@@ -63,11 +63,7 @@ const Home = () => {
     });
   };
 
-  const handleURLChange = (e) => {
-    setImageURL(e.target.value); 
-  };  
-  
- return (
+  return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <header className="relative p-6 bg-opacity-30 w-full max-w-screen-2xl mx-auto flex items-center justify-between">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-200 flex-grow">
@@ -117,7 +113,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Image:"
+                placeholder="Background Image URL:"
                 value={bgImageUrl}
                 onChange={(e) => setBgImageUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -126,7 +122,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Website:"
+                placeholder="Iframe URL:"
                 value={iframeUrl}
                 onChange={(e) => setIframeUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -135,7 +131,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Name:"
+                placeholder="Tooltip Text:"
                 value={tooltipText}
                 onChange={(e) => setTooltipText(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none focus:border-green-600"
@@ -201,17 +197,17 @@ const Home = () => {
 
       <Footer />
 
-      
-     <FloatingButton
-          tooltipText="Visitor B."
-          iframeSrc={iframeUrl}
-          imageURL={imageURL}  // Dynamic URL
-          labelTextColor={color}
-          borderColor="#000000"
-        />
+      <FloatingButton
+        tooltipText={tooltipText}
+        iframeSrc={iframeUrl}
+        imageURL={bgImageUrl} 
+        labelTextColor={color}
+        borderColor="#000000"
+      />
     </div>
   );
 };
 
 export default Home;
+
 
