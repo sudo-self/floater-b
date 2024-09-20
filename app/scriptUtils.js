@@ -86,17 +86,20 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
           cursor: pointer;
         }
         .${uniqueId}-tooltip {
-          position: absolute;
-          background-color: #333;
-          color: #f8f8f2;
-          border-radius: 5px;
-          padding: 5px 10px;
-          font-size: 12px;
-          white-space: nowrap;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          pointer-events: none;
-          z-index: 1001;
+           position: absolute;
+  bottom: 60px; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7); 
+  color: #f8f8f2;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1001;
         }
         .${uniqueId}-tooltip.visible {
           opacity: 1;
