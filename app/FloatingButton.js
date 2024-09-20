@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -126,23 +125,22 @@ const FloatingButton = ({
       <style jsx>{`
         .floating-button {
           position: fixed;
-        bottom: 20px;
-        right: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: background-color 0.3s ease;
-        z-index: 1000;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        background-image: url('${bgImageUrl}');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-
+          bottom: 20px;
+          right: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          transition: background-color 0.3s ease;
+          z-index: 1000;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          background-image: url('${imageURL}');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
         }
         
         .immediate-tooltip {
@@ -177,9 +175,8 @@ const FloatingButton = ({
           transition: opacity 0.3s ease;
           pointer-events: none;
           z-index: 1001;
-          margin-bottom: 10px;
         }
-        .delayed-tooltip {
+        .delayed-tooltip.visible {
           opacity: 1;
         }
         .popup {
