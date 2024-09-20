@@ -4,9 +4,9 @@
 import { useState, useEffect, useRef } from 'react';
 
 const FloatingButton = ({
-  tooltipText = 'A Production Framework',
+  tooltipText = 'Rockies B.',
   iframeSrc = 'https://nextjs.org',
-  imageURL = 'https://nextjs.org/favicon.ico',
+  imageURL = 'https://server.jessejesse.workers.dev/mnt.gif',
   labelTextColor = '#000000',
   borderColor = '#000000',
 }) => {
