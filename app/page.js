@@ -1,8 +1,6 @@
-"use client";
-
 import { useState, useEffect } from 'react';
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import { FaGithub } from 'react-icons/fa';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import BigText from './BigText';
 import Footer from './Footer';
 import ColorPicker from './ColorPicker';
@@ -17,10 +15,10 @@ const Home = () => {
   const [label, setLabel] = useState("(■_■)");
   const [bgImageUrl, setBgImageUrl] = useState("");
   const [iframeUrl, setIframeUrl] = useState("");
+  const [tooltipText, setTooltipText] = useState("");
   const [scriptUrl, setScriptUrl] = useState("");
   const [copied, setCopied] = useState(false);
   const [allFilled, setAllFilled] = useState(false);
-  const [tooltipText, setTooltipText] = useState('');
   const user = useAuth();
 
   useEffect(() => {
@@ -28,7 +26,7 @@ const Home = () => {
   }, [darkMode]);
 
   useEffect(() => {
-    setAllFilled(bgImageUrl && iframeUrl && tooltipText); // Ensure tooltipText is also filled
+    setAllFilled(bgImageUrl && iframeUrl && tooltipText);
   }, [bgImageUrl, iframeUrl, tooltipText]);
 
   const toggleDarkMode = () => {
@@ -43,11 +41,12 @@ const Home = () => {
       label,
       bgImageUrl,
       iframeUrl,
-      tooltipText // Added tooltipText
+      tooltipText
     });
 
     try {
       const uploadedScriptUrl = await uploadScript(scriptContent);
+      console.log('Script URL:', uploadedScriptUrl); 
       setScriptUrl(uploadedScriptUrl);
     } catch (error) {
       console.error('Error uploading script:', error);
@@ -62,21 +61,6 @@ const Home = () => {
       console.error('Failed to copy text:', err);
     });
   };
-
-  // Dynamically inject the script into the document head
-  useEffect(() => {
-    if (scriptUrl) {
-      const script = document.createElement('script');
-      script.src = scriptUrl;
-      script.async = true;
-      document.head.appendChild(script);
-
-      // Cleanup script from the head
-      return () => {
-        document.head.removeChild(script);
-      };
-    }
-  }, [scriptUrl]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -149,7 +133,7 @@ const Home = () => {
                 placeholder="Tooltip Text:"
                 value={tooltipText}
                 onChange={(e) => setTooltipText(e.target.value)}
-                className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none focus:border-green-600"
+                className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
               />
             </div>
             <button
