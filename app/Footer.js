@@ -8,7 +8,7 @@ export default function Footer() {
         🟢&nbsp;&nbsp;&#10085;&nbsp;
         <a
           className="ml-1 text-secondary text-green-600 hover:text-primary group"
-          href="https://jessejesse.xyz"
+          href="https://floater.jessejesse.xyz/FloaterForm"
           target="_blank"
           rel="noopener noreferrer"
         >
