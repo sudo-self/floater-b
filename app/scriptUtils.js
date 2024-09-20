@@ -114,15 +114,19 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       });
       document.body.appendChild(button);
 
-      // Create the popup
-      var popup = document.createElement('div');
-      popup.id = '${uniqueId}-popup';
-      popup.className = '${uniqueId}-popup';
-      popup.innerHTML = \`
-        <button class="${uniqueId}-close-button" onclick="closePopup('${uniqueId}')">×</button>
-        <iframe src="${iframeUrl}" title="Floater Content"></iframe>
-      \`;
-      document.body.appendChild(popup);
+
+var popup = document.createElement('div');
+popup.id = `${uniqueId}-popup`;
+popup.className = `${uniqueId}-popup`;
+popup.innerHTML = `
+  <button class="${uniqueId}-close-button">×</button>
+  <iframe src="${iframeUrl}" title="Floater Content"></iframe>
+`;
+document.body.appendChild(popup);
+
+popup.querySelector(`.${uniqueId}-close-button`).addEventListener('click', function() {
+  closePopup(uniqueId);
+});
 
       // Create the tooltip
       var tooltip = document.createElement('div');
