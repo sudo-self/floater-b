@@ -12,7 +12,7 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          JesseJesse.xyz
+         api.JesseJesse.xyz
           <span className="ml-1 transition-opacity duration-200 ease-in-out opacity-0 group-hover:opacity-100">
             &nbsp;↗
           </span>
