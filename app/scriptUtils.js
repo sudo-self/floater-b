@@ -1,3 +1,6 @@
+"use client";
+
+
 import { getStorage, ref, uploadString, getDownloadURL } from 'firebase/storage';
 import { initializeApp } from 'firebase/app';
 
@@ -27,7 +30,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
   return `
 (function() {
   var style = document.createElement('style');
-  style.innerHTML = `
+  style.innerHTML = \`
     .${uniqueId}-floating-button {
       position: fixed;
       bottom: 20px;
@@ -104,7 +107,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
     .${uniqueId}-tooltip.visible {
       opacity: 1;
     }
-  `;
+  \`;
   document.head.appendChild(style);
 
   // Create the button
@@ -123,13 +126,13 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
   var popup = document.createElement('div');
   popup.id = uniqueId + '-popup';
   popup.className = uniqueId + '-popup';
-  popup.innerHTML = `
+  popup.innerHTML = \`
     <button class="${uniqueId}-close-button">×</button>
     <iframe src="${iframeUrl}" title="Floater Content"></iframe>
-  `;
+  \`;
   document.body.appendChild(popup);
 
-  popup.querySelector(`.${uniqueId}-close-button`).addEventListener('click', function() {
+  popup.querySelector(\`.${uniqueId}-close-button\`).addEventListener('click', function() {
     closePopup(uniqueId);
   });
 
@@ -215,7 +218,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
   });
 })();
 
-
+`;
 
 export const uploadScript = async (scriptContent) => {
   try {
@@ -233,11 +236,9 @@ export const uploadScript = async (scriptContent) => {
   }
 };
 
-
 export const appendScriptToHead = (scriptUrl) => {
   const script = document.createElement('script');
   script.src = scriptUrl;
   script.async = true;
   document.head.appendChild(script);
 };
-
