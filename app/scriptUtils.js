@@ -25,7 +25,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
   const uniqueId = `btn-${Math.random().toString(36).substring(2, 9)}`;
 
   return `
-    (function() {
+(function() {
   var style = document.createElement('style');
   style.innerHTML = `
     .${uniqueId}-floating-button {
@@ -121,12 +121,12 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
 
   // Create the popup
   var popup = document.createElement('div');
-  popup.id = \`${uniqueId}-popup\`;
-  popup.className = \`${uniqueId}-popup\`;
-  popup.innerHTML = \`
+  popup.id = uniqueId + '-popup';
+  popup.className = uniqueId + '-popup';
+  popup.innerHTML = `
     <button class="${uniqueId}-close-button">×</button>
     <iframe src="${iframeUrl}" title="Floater Content"></iframe>
-  \`;
+  `;
   document.body.appendChild(popup);
 
   popup.querySelector(`.${uniqueId}-close-button`).addEventListener('click', function() {
@@ -140,14 +140,14 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
   button.appendChild(tooltip);
 
   function openPopup() {
-    var popup = document.getElementById('${uniqueId}-popup');
+    var popup = document.getElementById(uniqueId + '-popup');
     if (popup) {
       popup.style.display = 'block';
     }
   }
 
   function closePopup(uniqueId) {
-    var popup = document.getElementById('${uniqueId}-popup');
+    var popup = document.getElementById(uniqueId + '-popup');
     if (popup) {
       popup.style.display = 'none';
     }
@@ -181,8 +181,8 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
     if (isDragging) {
       const newLeft = e.clientX - offsetX;
       const newTop = e.clientY - offsetY;
-      button.style.left = \`\${newLeft}px\`;
-      button.style.top = \`\${newTop}px\`;
+      button.style.left = newLeft + 'px';
+      button.style.top = newTop + 'px';
     }
   }
 
@@ -197,8 +197,8 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       const touch = e.touches[0];
       const newLeft = touch.clientX - offsetX;
       const newTop = touch.clientY - offsetY;
-      button.style.left = \`\${newLeft}px\`;
-      button.style.top = \`\${newTop}px\`;
+      button.style.left = newLeft + 'px';
+      button.style.top = newTop + 'px';
     }
   }
 
@@ -214,6 +214,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
     startDrag(e);
   });
 })();
+
 
 
 export const uploadScript = async (scriptContent) => {
