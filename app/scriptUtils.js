@@ -17,17 +17,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
-
 const generateUniqueFilename = () => {
   const timestamp = Date.now();
   const randomString = Math.random().toString(36).substring(2, 12);
   return `${timestamp}-${randomString}.js`;
 };
 
-
 export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) => {
   const uniqueId = `btn-${Math.random().toString(36).substring(2, 9)}`;
- return `
+
+  return `
 (function() {
   var style = document.createElement('style');
   style.innerHTML = \`
@@ -122,41 +121,124 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
   });
   document.body.appendChild(button);
 
-   // Create the popup
+  // Create the popup
   var popup = document.createElement('div');
   popup.id = uniqueId + '-popup';
   popup.className = uniqueId + '-popup';
   popup.innerHTML = \`
-    <button class="${uniqueId}-close-button">&times;</button>
-    <iframe src="${iframeUrl}" frameborder="0"></iframe>
+    <button class="${uniqueId}-close-button">×</button>
+    <iframe src="${iframeUrl}" title="Floater Content"></iframe>
   \`;
   document.body.appendChild(popup);
 
-  // Create the close button for the popup
-  var closeButton = popup.querySelector('.${uniqueId}-close-button');
-  closeButton.addEventListener('click', closePopup);
+  popup.querySelector(\`.${uniqueId}-close-button\`).addEventListener('click', function() {
+    closePopup(uniqueId);
+  });
 
   // Create the tooltip
   var tooltip = document.createElement('div');
   tooltip.className = '${uniqueId}-tooltip';
-  tooltip.textContent = '${tooltipText}';
-  document.body.appendChild(tooltip);
+  tooltip.innerText = '${tooltipText}';
+  button.appendChild(tooltip);
 
-  button.addEventListener('mouseenter', function() {
-    tooltip.style.left = button.getBoundingClientRect().left + button.offsetWidth / 2 + 'px';
-    tooltip.style.bottom = window.innerHeight - button.getBoundingClientRect().bottom + 'px';
+  function openPopup() {
+    var popup = document.getElementById(uniqueId + '-popup');
+    if (popup) {
+      popup.style.display = 'block';
+    }
+  }
+
+  function closePopup(uniqueId) {
+    var popup = document.getElementById(uniqueId + '-popup');
+    if (popup) {
+      popup.style.display = 'none';
+    }
+  }
+
+  // Tooltip display on hover
+  button.addEventListener('mouseover', () => {
     tooltip.classList.add('visible');
   });
-
-  button.addEventListener('mouseleave', function() {
+  button.addEventListener('mouseout', () => {
     tooltip.classList.remove('visible');
   });
 
-  function openPopup() {
-    popup.style.display = 'block';
+  // Dragging functionality
+  let isDragging = false;
+  let offsetX, offsetY;
+
+  function startDrag(e) {
+    isDragging = true;
+    const clientX = e.clientX || e.touches[0].clientX;
+    const clientY = e.clientY || e.touches[0].clientY;
+    offsetX = clientX - button.getBoundingClientRect().left;
+    offsetY = clientY - button.getBoundingClientRect().top;
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+    document.addEventListener('touchmove', onTouchMove);
+    document.addEventListener('touchend', onTouchEnd);
   }
 
-  function closePopup() {
-    popup.style.display = 'none';
+  function onMouseMove(e) {
+    if (isDragging) {
+      const newLeft = e.clientX - offsetX;
+      const newTop = e.clientY - offsetY;
+      button.style.left = newLeft + 'px';
+      button.style.top = newTop + 'px';
+    }
   }
+
+  function onMouseUp() {
+    isDragging = false;
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  }
+
+  function onTouchMove(e) {
+    if (isDragging) {
+      const touch = e.touches[0];
+      const newLeft = touch.clientX - offsetX;
+      const newTop = touch.clientY - offsetY;
+      button.style.left = newLeft + 'px';
+      button.style.top = newTop + 'px';
+    }
+  }
+
+  function onTouchEnd() {
+    isDragging = false;
+    document.removeEventListener('touchmove', onTouchMove);
+    document.removeEventListener('touchend', onTouchEnd);
+  }
+
+  button.addEventListener('mousedown', startDrag);
+  button.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    startDrag(e);
+  });
 })();
+
+`;
+};
+
+export const uploadScript = async (scriptContent) => {
+  try {
+    const filename = generateUniqueFilename();
+    const scriptRef = ref(storage, `scripts/${filename}`);
+
+    await uploadString(scriptRef, scriptContent);
+
+    const downloadUrl = await getDownloadURL(scriptRef);
+
+    return downloadUrl;
+  } catch (error) {
+    console.error('Error uploading script:', error.message);
+    throw error;
+  }
+};
+
+export const appendScriptToHead = (scriptUrl) => {
+  const script = document.createElement('script');
+  script.src = scriptUrl;
+  script.async = true;
+  document.head.appendChild(script);
+};
