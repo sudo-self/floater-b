@@ -116,7 +116,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Background Image URL:"
+                placeholder="button image:"
                 value={bgImageUrl}
                 onChange={(e) => setBgImageUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -125,7 +125,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Iframe URL:"
+                placeholder="website:"
                 value={iframeUrl}
                 onChange={(e) => setIframeUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -134,7 +134,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Tooltip Text:"
+                placeholder="Name:"
                 value={tooltipText}
                 onChange={(e) => setTooltipText(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -155,7 +155,7 @@ const Home = () => {
                   alt="Copy icon"
                   className="w-8 h-8 mb-1 cursor-pointer"
                 />
-                <span>{copied ? 'Floater copied!' : 'Copy button'}</span>
+                <span>{copied ? 'copied!' : 'Copy?'}</span>
               </div>
             )}
           </div>
