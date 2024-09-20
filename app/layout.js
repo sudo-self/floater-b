@@ -64,7 +64,8 @@ export default function RootLayout({ children }) {
             </li>
           </ul>
         </nav>
-        {children}
+        <ClientScriptComponent />
+       {children}
       </body>
     </html>
   );
