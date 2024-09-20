@@ -29,8 +29,8 @@ const Home = () => {
   }, [darkMode]);
 
   useEffect(() => {
-    setAllFilled(bgImageUrl && iframeUrl);
-  }, [bgImageUrl, iframeUrl]);
+    setAllFilled(bgImageUrl && iframeUrl && tooltipText); // Ensure tooltipText is also filled
+  }, [bgImageUrl, iframeUrl, tooltipText]);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -44,6 +44,7 @@ const Home = () => {
       label,
       bgImageUrl,
       iframeUrl,
+      tooltipText // Added tooltipText
     });
 
     try {
@@ -62,6 +63,21 @@ const Home = () => {
       console.error('Failed to copy text:', err);
     });
   };
+
+  // Dynamically inject the script into the document head
+  useEffect(() => {
+    if (scriptUrl) {
+      const script = document.createElement('script');
+      script.src = scriptUrl;
+      script.async = true;
+      document.head.appendChild(script);
+
+      // Cleanup script from the head
+      return () => {
+        document.head.removeChild(script);
+      };
+    }
+  }, [scriptUrl]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -196,18 +212,11 @@ const Home = () => {
       </main>
 
       <Footer />
-
-      <FloatingButton
-        tooltipText={tooltipText}
-        iframeSrc={iframeUrl}
-        imageURL={bgImageUrl} 
-        labelTextColor={color}
-        borderColor="#000000"
-      />
     </div>
   );
 };
 
 export default Home;
+
 
 
