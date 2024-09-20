@@ -1,7 +1,7 @@
 // app/layout.js
 
 import localFont from "next/font/local";
-import ClientScriptComponent from "./clientScriptComponent";
+import ClientScriptComponent from "./ClientScriptComponent";
 import "./globals.css";
 import Link from 'next/link'; 
 const geistSans = localFont({
