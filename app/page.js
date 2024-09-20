@@ -8,6 +8,7 @@ import Footer from './Footer';
 import ColorPicker from './ColorPicker';
 import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
 import { generateScriptContent, uploadScript } from './scriptUtils';
+import FloatingButton from './FloatingButton'; 
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -50,7 +51,6 @@ const Home = () => {
       setScriptUrl(uploadedScriptUrl); 
     } catch (error) {
       console.error('Error uploading script:', error);
-
     }
   };
 
@@ -63,6 +63,10 @@ const Home = () => {
     });
   };
 
+  const handleURLChange = (e) => {
+    setImageURL(e.target.value); 
+  };  
+  
  return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <header className="relative p-6 bg-opacity-30 w-full max-w-screen-2xl mx-auto flex items-center justify-between">
@@ -196,8 +200,18 @@ const Home = () => {
       </main>
 
       <Footer />
+
+      
+     <FloatingButton
+          tooltipText="Visitor B."
+          iframeSrc={iframeUrl}
+          imageURL={imageURL}  // Dynamic URL
+          labelTextColor={color}
+          borderColor="#000000"
+        />
     </div>
   );
 };
 
 export default Home;
+
