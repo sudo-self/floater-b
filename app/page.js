@@ -8,7 +8,6 @@ import Footer from './Footer';
 import ColorPicker from './ColorPicker';
 import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
 import { generateScriptContent, uploadScript } from './scriptUtils';
-import FloatingButton from './FloatingButton';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(true);
