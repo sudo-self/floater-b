@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
@@ -6,6 +8,7 @@ import Footer from './Footer';
 import ColorPicker from './ColorPicker';
 import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
 import { generateScriptContent, uploadScript } from './scriptUtils';
+import ClientScriptComponent from './ClientScriptComponent';
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -64,7 +67,8 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-      <header className="relative p-6 bg-opacity-30 w-full max-w-screen-2xl mx-auto flex items-center justify-between">
+     <ClientScriptComponent />
+    <header className="relative p-6 bg-opacity-30 w-full max-w-screen-2xl mx-auto flex items-center justify-between">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-200 flex-grow">
           Floater B.
         </h1>
