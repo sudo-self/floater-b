@@ -126,23 +126,25 @@ const FloatingButton = ({
       <style jsx>{`
         .floating-button {
           position: fixed;
-          width: 60px;
-          height: 60px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border-radius: 50%;
-          border: 6px solid ${borderColor}; /* Thicker border */
-          cursor: pointer;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          background: ${labelTextColor};
-          z-index: 1000;
-          transition: background-color 0.3s ease;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+        z-index: 1000;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        background-image: url('${bgImageUrl}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
         }
-        .floating-button img {
-          width: 24px;
-          height: 24px;
-        }
+        
         .immediate-tooltip {
           position: absolute;
           bottom: calc(100% + 10px);
