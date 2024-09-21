@@ -7,7 +7,7 @@ export default function ClientScriptComponent() {
     <>
       {/* Project Lead */}
       <Script
-        src="https://pub-c1de1cb456e74d6bbbee111ba9e6c757.r2.dev/Project-Lead.js"
+        src="https://pub-c1de1cb456e74d6bbbee111ba9e6c757.r2.dev/team-leader.js"
         strategy="lazyOnload"
       />
       
