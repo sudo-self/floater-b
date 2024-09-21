@@ -27,9 +27,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
   const uniqueId = `btn-${Math.random().toString(36).substring(2, 9)}`;
 
   return `
-(function() {
-   var style = document.createElement('style');
-   style.innerHTML = `
+style.innerHTML = `
      .btn-waiafuw-floating-button {
        position: fixed;
        bottom: 20px;
@@ -173,7 +171,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
    popup.className = 'btn-waiafuw-popup';
    popup.innerHTML = `
      <button class="btn-waiafuw-close-button" onclick="closePopup()">×</button>
-     <iframe src="https://pub-62f7f17b63fe4f5cbbf739cf66c0c5ee.r2.dev/sourcecode.js" title="Floater Content"></iframe>
+     <iframe src='https://pub-62f7f17b63fe4f5cbbf739cf66c0c5ee.r2.dev/sourcecode.js" title="Floater Content'></iframe>
    `;
    document.body.appendChild(popup);
 
