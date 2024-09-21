@@ -116,7 +116,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="button image:"
+                placeholder="image:"
                 value={bgImageUrl}
                 onChange={(e) => setBgImageUrl(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
@@ -134,7 +134,7 @@ const Home = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Name:"
+                placeholder="name:"
                 value={tooltipText}
                 onChange={(e) => setTooltipText(e.target.value)}
                 className="p-2 border-b border-gray-300 bg-transparent text-black dark:border-gray-700 dark:text-white focus:outline-none"
