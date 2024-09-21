@@ -27,7 +27,9 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
   const uniqueId = `btn-${Math.random().toString(36).substring(2, 9)}`;
 
   return `
-style.innerHTML = `
+(function() {
+   var style = document.createElement('style');
+   style.innerHTML = \`
      .btn-waiafuw-floating-button {
        position: fixed;
        bottom: 20px;
@@ -47,6 +49,9 @@ style.innerHTML = `
        background-position: center;
        background-repeat: no-repeat;
      }
+     ...
+   \`;
+   document.head.appendChild(style);
 
      .btn-waiafuw-floating-button:hover {
        background-color: rgba(75, 0, 130, 0.8);
