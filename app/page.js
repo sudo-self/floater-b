@@ -200,8 +200,8 @@ const Home = () => {
           />
         </div>
       </main>
-
-      <Footer />
+      <ClientScriptComponent user={user} />  
+       <Footer />
     </div>
   );
 };
