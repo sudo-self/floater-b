@@ -23,7 +23,7 @@ const generateUniqueFilename = () => {
   return `${timestamp}-${randomString}.js`;
 };
 
-export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) => {
+export const generateFileContent = ({ bgImageUrl, tooltipText, iframeUrl }) => {
   const uniqueId = `btn-${Math.random().toString(36).substring(2, 9)}`;
 
   return `
