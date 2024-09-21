@@ -210,7 +210,7 @@ export async function POST(req) {
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+   document.addEventListener('DOMContentLoaded', () => {
         new FloaterButton({
             tooltipText: '${tooltipText || 'Floater B.'}',
             iframeSrc: '${iframeSrc || 'https://floater.jessejesse.xyz'}',
@@ -218,12 +218,20 @@ export async function POST(req) {
     });
   `;
 
+  return new Response(floaterScript, {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/javascript',
+    },
+  });
+}
+
 export async function GET(req) {
   return new Response(JSON.stringify({
     schemaVersion: 1,
     label: 'Floater API',
-    message: 'Operational',  
-    color: 'green',  
+    message: 'Operational',
+    color: 'green',
   }), {
     status: 200,
     headers: {
