@@ -23,7 +23,7 @@ const generateUniqueFilename = () => {
   return `${timestamp}-${randomString}.js`;
 };
 
-export const generateFileContent = ({ bgImageUrl, tooltipText, iframeUrl }) => {
+export const generateFileContent = ({ bgImageUrl, tooltipText, iframeUrl, color, hoverColor, shape, label }) => {
   const uniqueId = `btn-${Math.random().toString(36).substring(2, 9)}`;
 
   return `
@@ -41,16 +41,17 @@ export const generateFileContent = ({ bgImageUrl, tooltipText, iframeUrl }) => {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: background-color 0.3s ease;
       z-index: 1000;
-      border-radius: 50%;
+      border-radius: ${shape === 'circle' ? '50%' : '0'};
       width: 60px;
       height: 60px;
+      background-color: ${color};
       background-image: url('${bgImageUrl}');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
     .${uniqueId}-floating-button:hover {
-      background-color: rgba(75, 0, 130, 0.8);
+      background-color: ${hoverColor};
     }
     .${uniqueId}-popup {
       display: none;
@@ -109,16 +110,15 @@ export const generateFileContent = ({ bgImageUrl, tooltipText, iframeUrl }) => {
   \`;
   document.head.appendChild(style);
 
+  var button = document.createElement('div');
+  button.className = '${uniqueId}-floating-button';
+  button.addEventListener('click', openPopup); 
+  button.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    openPopup();
+  });
 
-var button = document.createElement('div');
-button.className = '${uniqueId}-floating-button';
-button.addEventListener('click', openPopup); 
-button.addEventListener('touchend', function(e) {
-  e.preventDefault();
-  openPopup();
-});
-
-document.body.appendChild(button);
+  document.body.appendChild(button);
 
   var popup = document.createElement('div');
   popup.id = uniqueId + '-popup';
@@ -132,7 +132,6 @@ document.body.appendChild(button);
   popup.querySelector(\`.${uniqueId}-close-button\`).addEventListener('click', function() {
     closePopup(uniqueId);
   });
-
 
   var tooltip = document.createElement('div');
   tooltip.className = '${uniqueId}-tooltip';
@@ -153,14 +152,12 @@ document.body.appendChild(button);
     }
   }
 
-
   button.addEventListener('mouseover', () => {
     tooltip.classList.add('visible');
   });
   button.addEventListener('mouseout', () => {
     tooltip.classList.remove('visible');
   });
-
 
   let isDragging = false;
   let offsetX, offsetY;
@@ -240,4 +237,5 @@ export const appendScriptToHead = (scriptUrl) => {
   script.async = true;
   document.head.appendChild(script);
 };
+
 
