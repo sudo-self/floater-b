@@ -3,11 +3,13 @@
 export async function POST(req) {
   const { tooltipText, iframeSrc, imageURL, labelTextColor } = await req.json();
 
+  const generateId = () => `btn-${Math.random().toString(36).substr(2, 9)}-${Date.now()}`;
+
   const floaterScript = `
     class FloaterButton {
         constructor(options = {}) {
-            this.buttonId = options.buttonId || 'btn-qrtdogd-floating-button';
-            this.popupId = options.popupId || 'btn-qrtdogd-popup';
+            this.buttonId = options.buttonId || '${generateId()}';
+            this.popupId = options.popupId || '${generateId()}';
             this.tooltipText = options.tooltipText || '${tooltipText || 'Floater B.'}';
             this.iframeSrc = options.iframeSrc || '${iframeSrc || 'https://floater.jessejesse.xyz'}';
             this.createStyles();
@@ -215,15 +217,6 @@ export async function POST(req) {
         });
     });
   `;
-
-  return new Response(floaterScript, {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/javascript',
-    },
-  });
-}
-
 
 export async function GET(req) {
   return new Response(JSON.stringify({
