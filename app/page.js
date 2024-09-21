@@ -7,7 +7,7 @@ import BigText from './BigText';
 import Footer from './Footer';
 import ColorPicker from './ColorPicker';
 import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
-import { generateFileContent, uploadScript } from './scriptUtils';
+import { generateScriptContent, uploadScript } from './scriptUtils';
 import ClientScriptComponent from './ClientScriptComponent';
 
 const Home = () => {
