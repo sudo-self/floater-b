@@ -12,13 +12,6 @@
 
 </div>
 
-## npx
-
-```
-npx floater-xyz
-```
-
-
 ##  api
 
 ```
