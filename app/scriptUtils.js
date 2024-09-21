@@ -30,7 +30,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
 (function() {
   var style = document.createElement('style');
   style.innerHTML = \`
-    .btn-waiafuw-floating-button {
+    .${uniqueId}-floating-button {
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -49,12 +49,10 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       background-position: center;
       background-repeat: no-repeat;
     }
-
-    .btn-waiafuw-floating-button:hover {
+    .${uniqueId}-floating-button:hover {
       background-color: rgba(75, 0, 130, 0.8);
     }
-
-    .btn-waiafuw-popup {
+    .${uniqueId}-popup {
       display: none;
       position: fixed;
       top: 50%;
@@ -68,17 +66,13 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       z-index: 1001;
-      opacity: 0;
-      transition: opacity 0.3s ease;
     }
-
-    .btn-waiafuw-popup iframe {
+    .${uniqueId}-popup iframe {
       width: 100%;
       height: 400px;
       border: none;
     }
-
-    .btn-waiafuw-close-button {
+    .${uniqueId}-close-button {
       position: absolute;
       top: 10px;
       right: 10px;
@@ -93,13 +87,12 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       align-items: center;
       cursor: pointer;
     }
-
-    .btn-waiafuw-tooltip {
+    .${uniqueId}-tooltip {
       position: absolute;
-      bottom: 70px;
+      bottom: 60px; 
       left: 50%;
       transform: translateX(-50%);
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.7); 
       color: #f8f8f2;
       border-radius: 5px;
       padding: 5px 10px;
@@ -108,87 +101,58 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       opacity: 0;
       transition: opacity 0.3s ease;
       pointer-events: none;
-      z-index: 1002;
+      z-index: 1001;
     }
-
-    .btn-waiafuw-tooltip.visible {
+    .${uniqueId}-tooltip.visible {
       opacity: 1;
-    }
-
-    .btn-waiafuw-floating-button.long-press {
-      animation: rumble 0.3s ease forwards;
-    }
-
-    @keyframes rumble {
-      0%, 100% { transform: translate(0); }
-      25% { transform: translate(-2px, 2px); }
-      50% { transform: translate(2px, -2px); }
-      75% { transform: translate(-2px, -2px); }
     }
   \`;
   document.head.appendChild(style);
 
-  var button = document.createElement('div');
-  button.className = 'btn-waiafuw-floating-button';
-  document.body.appendChild(button);
 
-  var tooltip = document.createElement('div');
-  tooltip.className = 'btn-waiafuw-tooltip';
-  tooltip.innerText = tooltipText || 'Source Code';
-  button.appendChild(tooltip);
+var button = document.createElement('div');
+button.className = '${uniqueId}-floating-button';
+button.addEventListener('click', openPopup); 
+button.addEventListener('touchend', function(e) {
+  e.preventDefault();
+  openPopup();
+});
 
-  let longPressTimeout;
-
-  button.addEventListener('mousedown', startLongPress);
-  button.addEventListener('touchstart', function(e) {
-    e.preventDefault();
-    startLongPress();
-  });
-
-  function startLongPress() {
-    longPressTimeout = setTimeout(() => {
-      button.classList.add('long-press');
-      if (navigator.vibrate) {
-        navigator.vibrate(200);
-      }
-      openPopup();
-    }, 500);
-  }
-
-  button.addEventListener('mouseup', endLongPress);
-  button.addEventListener('mouseleave', endLongPress);
-  button.addEventListener('touchend', endLongPress);
-
-  function endLongPress() {
-    clearTimeout(longPressTimeout);
-    button.classList.remove('long-press');
-  }
+document.body.appendChild(button);
 
   var popup = document.createElement('div');
-  popup.id = 'btn-waiafuw-popup';
-  popup.className = 'btn-waiafuw-popup';
+  popup.id = uniqueId + '-popup';
+  popup.className = uniqueId + '-popup';
   popup.innerHTML = \`
-    <button class="btn-waiafuw-close-button" onclick="closePopup()">×</button>
-    <iframe src='${iframeUrl}' title="Floater Content"></iframe>
+    <button class="${uniqueId}-close-button">×</button>
+    <iframe src="${iframeUrl}" title="Floater Content"></iframe>
   \`;
   document.body.appendChild(popup);
 
+  popup.querySelector(\`.${uniqueId}-close-button\`).addEventListener('click', function() {
+    closePopup(uniqueId);
+  });
+
+
+  var tooltip = document.createElement('div');
+  tooltip.className = '${uniqueId}-tooltip';
+  tooltip.innerText = '${tooltipText}';
+  button.appendChild(tooltip);
+
   function openPopup() {
-    popup.style.display = 'block';
-    popup.style.opacity = '1';
+    var popup = document.getElementById(uniqueId + '-popup');
+    if (popup) {
+      popup.style.display = 'block';
+    }
   }
 
-  function closePopup() {
-    popup.style.opacity = '0';
-    setTimeout(() => {
+  function closePopup(uniqueId) {
+    var popup = document.getElementById(uniqueId + '-popup');
+    if (popup) {
       popup.style.display = 'none';
-    }, 300);
+    }
   }
 
-  button.addEventListener('click', openPopup);
-
-  var closeButton = popup.querySelector('.btn-waiafuw-close-button');
-  closeButton.addEventListener('click', closePopup);
 
   button.addEventListener('mouseover', () => {
     tooltip.classList.add('visible');
@@ -197,12 +161,6 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
     tooltip.classList.remove('visible');
   });
 
-  button.addEventListener('touchstart', () => {
-    tooltip.classList.add('visible');
-  });
-  button.addEventListener('touchend', () => {
-    tooltip.classList.remove('visible');
-  });
 
   let isDragging = false;
   let offsetX, offsetY;
@@ -223,8 +181,8 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
     if (isDragging) {
       const newLeft = e.clientX - offsetX;
       const newTop = e.clientY - offsetY;
-      button.style.left = \`\${newLeft}px\`;
-      button.style.top = \`\${newTop}px\`;
+      button.style.left = newLeft + 'px';
+      button.style.top = newTop + 'px';
     }
   }
 
@@ -239,8 +197,8 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
       const touch = e.touches[0];
       const newLeft = touch.clientX - offsetX;
       const newTop = touch.clientY - offsetY;
-      button.style.left = \`\${newLeft}px\`;
-      button.style.top = \`\${newTop}px\`;
+      button.style.left = newLeft + 'px';
+      button.style.top = newTop + 'px';
     }
   }
 
@@ -256,13 +214,14 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
     startDrag(e);
   });
 })();
+
 `;
 };
 
 export const uploadScript = async (scriptContent) => {
   try {
     const filename = generateUniqueFilename();
-    const scriptRef = ref(storage, \`scripts/\${filename}\`);
+    const scriptRef = ref(storage, `scripts/${filename}`);
 
     await uploadString(scriptRef, scriptContent);
 
@@ -273,5 +232,12 @@ export const uploadScript = async (scriptContent) => {
     console.error('Error uploading script:', error.message);
     throw error;
   }
+};
+
+export const appendScriptToHead = (scriptUrl) => {
+  const script = document.createElement('script');
+  script.src = scriptUrl;
+  script.async = true;
+  document.head.appendChild(script);
 };
 
