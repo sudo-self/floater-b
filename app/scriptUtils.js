@@ -109,19 +109,17 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
   \`;
   document.head.appendChild(style);
 
-  // Create the button
-  var button = document.createElement('div');
-  button.className = '${uniqueId}-floating-button';
-  button.addEventListener('dblclick', openPopup);
-  button.addEventListener('touchend', function(e) {
-    e.preventDefault();
-    if (e.detail === 2) { // Check for double-tap
-      openPopup();
-    }
-  });
-  document.body.appendChild(button);
 
-  // Create the popup
+var button = document.createElement('div');
+button.className = '${uniqueId}-floating-button';
+button.addEventListener('click', openPopup); 
+button.addEventListener('touchend', function(e) {
+  e.preventDefault();
+  openPopup();
+});
+
+document.body.appendChild(button);
+
   var popup = document.createElement('div');
   popup.id = uniqueId + '-popup';
   popup.className = uniqueId + '-popup';
@@ -135,7 +133,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
     closePopup(uniqueId);
   });
 
-  // Create the tooltip
+
   var tooltip = document.createElement('div');
   tooltip.className = '${uniqueId}-tooltip';
   tooltip.innerText = '${tooltipText}';
@@ -155,7 +153,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
     }
   }
 
-  // Tooltip display on hover
+
   button.addEventListener('mouseover', () => {
     tooltip.classList.add('visible');
   });
@@ -163,7 +161,7 @@ export const generateScriptContent = ({ bgImageUrl, tooltipText, iframeUrl }) =>
     tooltip.classList.remove('visible');
   });
 
-  // Dragging functionality
+
   let isDragging = false;
   let offsetX, offsetY;
 
