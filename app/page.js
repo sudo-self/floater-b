@@ -22,9 +22,17 @@ const Home = () => {
   const [scriptUrl, setScriptUrl] = useState("");
   const [copied, setCopied] = useState(false);
   const [allFilled, setAllFilled] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const user = useAuth();
 
   useEffect(() => {
+    const storedDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(storedDarkMode);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
     document.documentElement.classList.toggle('dark', darkMode);
   }, [darkMode]);
 
@@ -37,27 +45,29 @@ const Home = () => {
   };
 
   const handleGenerateAndUpload = async () => {
-  const scriptContent = generateFileContent({
-    color,
-    hoverColor,
-    shape,
-    label,
-    bgImageUrl,
-    iframeUrl,
-    tooltipText,
-  });
+    setLoading(true);
+    setError('');
 
-  try {
-    const uploadedScriptUrl = await uploadScript(scriptContent);
-    console.log('Script URL:', uploadedScriptUrl);
-    setScriptUrl(uploadedScriptUrl);
-    setError(''); 
-  } catch (error) {
-    console.error('Error uploading script:', error);
-    setError('Failed to upload the script. Please try again.');
-  }
-};
+    const scriptContent = generateFileContent({
+      color,
+      hoverColor,
+      shape,
+      label,
+      bgImageUrl,
+      iframeUrl,
+      tooltipText,
+    });
 
+    try {
+      const uploadedScriptUrl = await uploadScript(scriptContent);
+      setScriptUrl(uploadedScriptUrl);
+    } catch (error) {
+      console.error('Error uploading script:', error);
+      setError('Failed to upload the script. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(() => {
@@ -70,8 +80,8 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-     <ClientScriptComponent />
-    <header className="relative p-6 bg-opacity-30 w-full max-w-screen-2xl mx-auto flex items-center justify-between">
+      <ClientScriptComponent />
+      <header className="relative p-6 bg-opacity-30 w-full max-w-screen-2xl mx-auto flex items-center justify-between">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-200 flex-grow">
           Floater B.
         </h1>
@@ -144,12 +154,13 @@ const Home = () => {
               />
             </div>
             <button
-              className={`px-4 py-2 bg-blue-500 text-white rounded ${allFilled ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
+              className={`px-4 py-2 bg-blue-500 text-white rounded ${loading || !allFilled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
               onClick={handleGenerateAndUpload}
-              disabled={!allFilled}
+              disabled={loading || !allFilled}
             >
-              Create Floater
+              {loading ? 'Creating...' : 'Create Floater'}
             </button>
+            {error && <div className="text-red-500">{error}</div>}
             {scriptUrl && (
               <div className="mt-4 flex flex-col items-center">
                 <img
@@ -200,13 +211,14 @@ const Home = () => {
           />
         </div>
       </main>
-      <ClientScriptComponent user={user} />  
-       <Footer />
+
+      <Footer />
     </div>
   );
 };
 
 export default Home;
+
 
 
 
