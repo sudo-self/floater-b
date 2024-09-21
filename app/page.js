@@ -37,24 +37,27 @@ const Home = () => {
   };
 
   const handleGenerateAndUpload = async () => {
-    const scriptContent = generateScriptContent({
-      color,
-      hoverColor,
-      shape,
-      label,
-      bgImageUrl,
-      iframeUrl,
-      tooltipText
-    });
+  const scriptContent = generateFileContent({
+    color,
+    hoverColor,
+    shape,
+    label,
+    bgImageUrl,
+    iframeUrl,
+    tooltipText,
+  });
 
-    try {
-      const uploadedScriptUrl = await uploadScript(scriptContent);
-      console.log('Script URL:', uploadedScriptUrl); 
-      setScriptUrl(uploadedScriptUrl);
-    } catch (error) {
-      console.error('Error uploading script:', error);
-    }
-  };
+  try {
+    const uploadedScriptUrl = await uploadScript(scriptContent);
+    console.log('Script URL:', uploadedScriptUrl);
+    setScriptUrl(uploadedScriptUrl);
+    setError(''); 
+  } catch (error) {
+    console.error('Error uploading script:', error);
+    setError('Failed to upload the script. Please try again.');
+  }
+};
+
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(() => {
