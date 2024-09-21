@@ -1,12 +1,20 @@
 <div align="center">
     
+[api.jessejesse.xyz](https://api.jessejesse.xyz)<br>
+[floater.jessejesse.xyz](https://floater.jessejesse.xyz)<br>
+[floater-buttons-generator.vercel.app](https://floater-buttons-generator.vercel.app)<br>
+[floater-xyz-sudoselfs-projects.vercel.app](https://floater-xyz-sudoselfs-projects.vercel.app)<br>
+[floater-xyz.vercel.app](https://floater-xyz.vercel.app)<br>
+[floater-xyz-git-main-sudoselfs-projects.vercel.app](https://floater-xyz-git-main-sudoselfs-projects.vercel.app)<br>
+
+
+    
 [![API Status](https://img.shields.io/endpoint?url=https://floater.jessejesse.xyz/api/floater)](https://floater.jessejesse.xyz/api/floater)
 
 [![Node.js Package](https://github.com/sudo-self/floater-buttons/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/sudo-self/floater-buttons/actions/workflows/npm-publish.yml)
 
 [![Latest Blog Post Workflow](https://github.com/sudo-self/sudo-self/actions/workflows/blogpost.yml/badge.svg?branch=main)](https://github.com/sudo-self/sudo-self/actions/workflows/blogpost.yml)
 
-[![Deploy Next.js site to Pages](https://github.com/sudo-self/floater-b/actions/workflows/nextjs.yml/badge.svg)](https://github.com/sudo-self/floater-b/actions/workflows/nextjs.yml)
 <img width="1440" alt="nextjs" src="https://github.com/user-attachments/assets/83df2555-408e-42fd-91a6-727a3e16f1f8">
 <img width="1440" alt="npx" src="https://github.com/user-attachments/assets/b690f056-e4d5-42e4-8abc-850ae02d4f08">
 
