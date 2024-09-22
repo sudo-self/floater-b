@@ -213,8 +213,17 @@ const Home = () => {
         </div>
       </main>
        <div className="flex justify-center mt-8">
-
-        <button href="https://github.com/sudo-self/floater-b" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star sudo-self/floater-b on GitHub">Star</button>
+  <a
+            href="https://github.com/sudo-self/floater-b"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-gray-300 transition-colors duration-300"
+            data-icon="octicon-star" 
+            data-size="large" 
+            aria-label="Star sudo-self/floater-b on GitHub"
+       
+          >
+            <FaStar className="w-6 h-6" />
        </div>
       <Footer />
     </div>
@@ -222,7 +231,6 @@ const Home = () => {
 };
 
 export default Home;
-
 
 
 
