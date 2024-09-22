@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { FaGithub } from 'react-icons/fa';
-import GitHubButton from 'react-github-btn'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import BigText from './BigText';
 import Footer from './Footer';
@@ -215,7 +214,7 @@ const Home = () => {
       </main>
        <div className="flex justify-center mt-8">
 
-        <GitHubButton href="https://github.com/sudo-self/floater-b" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star sudo-self/floater-b on GitHub">Star</GitHubButton>
+        <button href="https://github.com/sudo-self/floater-b" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star sudo-self/floater-b on GitHub">Star</Button>
        </div>
       <Footer />
     </div>
