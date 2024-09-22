@@ -211,7 +211,9 @@ const Home = () => {
           />
         </div>
       </main>
+       <div className="flex justify-center mt-8">
        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Ffloater.jessejesse.xyz&width=110&layout=standard&action=like&size=small&share=false&height=35&appId=7005971196091165" width="110" height="35" scrolling="no"></iframe>
+     </div>       
       <Footer />
     </div>
   );
