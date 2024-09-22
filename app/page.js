@@ -214,7 +214,7 @@ const Home = () => {
       </main>
        <div className="flex justify-center mt-8">
 
-        <button href="https://github.com/sudo-self/floater-b" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star sudo-self/floater-b on GitHub">Star</Button>
+        <button href="https://github.com/sudo-self/floater-b" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star sudo-self/floater-b on GitHub">Star</button>
        </div>
       <Footer />
     </div>
