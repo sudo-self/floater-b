@@ -1,5 +1,3 @@
-// app/api/floater/route.js
-
 export async function POST(req) {
   const { tooltipText, iframeSrc, imageURL, labelTextColor } = await req.json();
 
@@ -12,6 +10,7 @@ export async function POST(req) {
             this.popupId = options.popupId || '${generateId()}';
             this.tooltipText = options.tooltipText || '${tooltipText || 'Floater B.'}';
             this.iframeSrc = options.iframeSrc || '${iframeSrc || 'https://floater.jessejesse.xyz'}';
+            this.imageURL = options.imageURL || '${imageURL || 'https://media2.giphy.com/media/LWYj2JxzlJteRcgWHX/200.webp'}';
             this.createStyles();
             this.createButton();
             this.createPopup();
@@ -22,7 +21,7 @@ export async function POST(req) {
         createStyles() {
             const style = document.createElement('style');
             style.innerHTML = \`
-                .btn-qrtdogd-floating-button {
+                .${this.buttonId} {
                     position: fixed;
                     bottom: 20px;
                     right: 20px;
@@ -36,15 +35,15 @@ export async function POST(req) {
                     border-radius: 50%;
                     width: 60px;
                     height: 60px;
-                    background-image: url('${imageURL || 'https://media2.giphy.com/media/LWYj2JxzlJteRcgWHX/200.webp'}');
+                    background-image: url('\${this.imageURL}');
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
                 }
-                .btn-qrtdogd-floating-button:hover {
+                .${this.buttonId}:hover {
                     background-color: rgba(75, 0, 130, 0.8);
                 }
-                .btn-qrtdogd-popup {
+                .${this.popupId} {
                     display: none;
                     position: fixed;
                     top: 50%;
@@ -60,13 +59,13 @@ export async function POST(req) {
                     z-index: 1001;
                     box-sizing: border-box;
                 }
-                .btn-qrtdogd-popup iframe {
+                .${this.popupId} iframe {
                     width: 100%;
                     height: 400px;
                     border: none;
                     display: block;
                 }
-                .btn-qrtdogd-close-button {
+                .${this.popupId} .close-button {
                     position: absolute;
                     top: 10px;
                     right: 10px;
@@ -82,7 +81,7 @@ export async function POST(req) {
                     cursor: pointer;
                     font-size: 16px;
                 }
-                .btn-qrtdogd-tooltip {
+                .${this.popupId} .tooltip {
                     position: absolute;
                     background-color: #333;
                     color: #f8f8f2;
@@ -99,7 +98,7 @@ export async function POST(req) {
                     transform: translateX(-50%);
                     margin-bottom: 10px;
                 }
-                .btn-qrtdogd-tooltip.visible {
+                .${this.popupId} .tooltip.visible {
                     opacity: 1;
                 }
             \`;
@@ -109,16 +108,16 @@ export async function POST(req) {
         createButton() {
             this.button = document.createElement('div');
             this.button.id = this.buttonId;
-            this.button.className = 'btn-qrtdogd-floating-button';
+            this.button.className = '${this.buttonId}';
             document.body.appendChild(this.button);
         }
 
         createPopup() {
             this.popup = document.createElement('div');
             this.popup.id = this.popupId;
-            this.popup.className = 'btn-qrtdogd-popup';
+            this.popup.className = '${this.popupId}';
             this.popup.innerHTML = \`
-                <button class="btn-qrtdogd-close-button">×</button>
+                <button class="close-button">×</button>
                 <iframe src="\${this.iframeSrc}" title="Floater Content"></iframe>
             \`;
             document.body.appendChild(this.popup);
@@ -126,7 +125,7 @@ export async function POST(req) {
 
         createTooltip() {
             this.tooltip = document.createElement('div');
-            this.tooltip.className = 'btn-qrtdogd-tooltip';
+            this.tooltip.className = 'tooltip';
             this.tooltip.innerText = this.tooltipText;
             this.button.appendChild(this.tooltip);
         }
@@ -138,7 +137,7 @@ export async function POST(req) {
                 this.openPopup();
             });
 
-            document.querySelector(\`#\${this.popupId} .btn-qrtdogd-close-button\`).addEventListener('click', () => this.closePopup());
+            this.popup.querySelector('.close-button').addEventListener('click', () => this.closePopup());
 
             this.button.addEventListener('mouseover', () => {
                 this.tooltip.classList.add('visible');
@@ -210,10 +209,11 @@ export async function POST(req) {
         }
     }
 
-   document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
         new FloaterButton({
             tooltipText: '${tooltipText || 'Floater B.'}',
             iframeSrc: '${iframeSrc || 'https://floater.jessejesse.xyz'}',
+            imageURL: '${imageURL || 'https://media2.giphy.com/media/LWYj2JxzlJteRcgWHX/200.webp'}',
         });
     });
   `;
@@ -239,6 +239,7 @@ export async function GET(req) {
     },
   });
 }
+
 
 
 
