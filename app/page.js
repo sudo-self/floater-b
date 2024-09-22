@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { FaGithub } from 'react-icons/fa';
+import GitHubButton from 'react-github-btn'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import BigText from './BigText';
 import Footer from './Footer';
@@ -9,6 +10,7 @@ import ColorPicker from './ColorPicker';
 import { useAuth, signInWithGoogle, signInWithGithub, handleSignOut } from './firebase';
 import { generateFileContent, uploadScript } from './scriptUtils';
 import ClientScriptComponent from './ClientScriptComponent';
+
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -212,8 +214,9 @@ const Home = () => {
         </div>
       </main>
        <div className="flex justify-center mt-8">
-       <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Ffloater.jessejesse.xyz&width=110&layout=standard&action=like&size=small&share=false&height=35&appId=7005971196091165" width="110" height="35" scrolling="no"></iframe>
-     </div>       
+
+        <GitHubButton href="https://github.com/sudo-self/floater-b" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star sudo-self/floater-b on GitHub">Star</GitHubButton>
+       </div>
       <Footer />
     </div>
   );
