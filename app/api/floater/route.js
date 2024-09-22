@@ -10,7 +10,10 @@ export async function POST(req) {
             this.popupId = options.popupId || '${generateId()}';
             this.tooltipText = options.tooltipText || '${tooltipText || 'Floater B.'}';
             this.iframeSrc = options.iframeSrc || '${iframeSrc || 'https://floater.jessejesse.xyz'}';
-            this.imageURL = options.imageURL || '${imageURL || 'https://media2.giphy.com/media/LWYj2JxzlJteRcgWHX/200.webp'}';
+            this.buttonClass = 'btn-${generateId()}-floating-button';
+            this.popupClass = 'btn-${generateId()}-popup';
+            this.closeButtonClass = 'btn-${generateId()}-close-button';
+            this.tooltipClass = 'btn-${generateId()}-tooltip';
             this.createStyles();
             this.createButton();
             this.createPopup();
@@ -21,7 +24,7 @@ export async function POST(req) {
         createStyles() {
             const style = document.createElement('style');
             style.innerHTML = \`
-                .${this.buttonId} {
+                .\${this.buttonClass} {
                     position: fixed;
                     bottom: 20px;
                     right: 20px;
@@ -35,15 +38,15 @@ export async function POST(req) {
                     border-radius: 50%;
                     width: 60px;
                     height: 60px;
-                    background-image: url('\${this.imageURL}');
+                    background-image: url('${imageURL || 'https://media2.giphy.com/media/LWYj2JxzlJteRcgWHX/200.webp'}');
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
                 }
-                .${this.buttonId}:hover {
+                .\${this.buttonClass}:hover {
                     background-color: rgba(75, 0, 130, 0.8);
                 }
-                .${this.popupId} {
+                .\${this.popupClass} {
                     display: none;
                     position: fixed;
                     top: 50%;
@@ -59,13 +62,13 @@ export async function POST(req) {
                     z-index: 1001;
                     box-sizing: border-box;
                 }
-                .${this.popupId} iframe {
+                .\${this.popupClass} iframe {
                     width: 100%;
                     height: 400px;
                     border: none;
                     display: block;
                 }
-                .${this.popupId} .close-button {
+                .\${this.closeButtonClass} {
                     position: absolute;
                     top: 10px;
                     right: 10px;
@@ -81,7 +84,7 @@ export async function POST(req) {
                     cursor: pointer;
                     font-size: 16px;
                 }
-                .${this.popupId} .tooltip {
+                .\${this.tooltipClass} {
                     position: absolute;
                     background-color: #333;
                     color: #f8f8f2;
@@ -98,7 +101,7 @@ export async function POST(req) {
                     transform: translateX(-50%);
                     margin-bottom: 10px;
                 }
-                .${this.popupId} .tooltip.visible {
+                .\${this.tooltipClass}.visible {
                     opacity: 1;
                 }
             \`;
@@ -108,16 +111,16 @@ export async function POST(req) {
         createButton() {
             this.button = document.createElement('div');
             this.button.id = this.buttonId;
-            this.button.className = '${this.buttonId}';
+            this.button.className = this.buttonClass;
             document.body.appendChild(this.button);
         }
 
         createPopup() {
             this.popup = document.createElement('div');
             this.popup.id = this.popupId;
-            this.popup.className = '${this.popupId}';
+            this.popup.className = this.popupClass;
             this.popup.innerHTML = \`
-                <button class="close-button">×</button>
+                <button class="\${this.closeButtonClass}">×</button>
                 <iframe src="\${this.iframeSrc}" title="Floater Content"></iframe>
             \`;
             document.body.appendChild(this.popup);
@@ -125,7 +128,7 @@ export async function POST(req) {
 
         createTooltip() {
             this.tooltip = document.createElement('div');
-            this.tooltip.className = 'tooltip';
+            this.tooltip.className = this.tooltipClass;
             this.tooltip.innerText = this.tooltipText;
             this.button.appendChild(this.tooltip);
         }
@@ -137,7 +140,7 @@ export async function POST(req) {
                 this.openPopup();
             });
 
-            this.popup.querySelector('.close-button').addEventListener('click', () => this.closePopup());
+            document.querySelector(\`#\${this.popupId} .\${this.closeButtonClass}\`).addEventListener('click', () => this.closePopup());
 
             this.button.addEventListener('mouseover', () => {
                 this.tooltip.classList.add('visible');
@@ -209,11 +212,10 @@ export async function POST(req) {
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+   document.addEventListener('DOMContentLoaded', () => {
         new FloaterButton({
             tooltipText: '${tooltipText || 'Floater B.'}',
             iframeSrc: '${iframeSrc || 'https://floater.jessejesse.xyz'}',
-            imageURL: '${imageURL || 'https://media2.giphy.com/media/LWYj2JxzlJteRcgWHX/200.webp'}',
         });
     });
   `;
@@ -226,19 +228,6 @@ export async function POST(req) {
   });
 }
 
-export async function GET(req) {
-  return new Response(JSON.stringify({
-    schemaVersion: 1,
-    label: 'Floater API',
-    message: 'Operational',
-    color: 'green',
-  }), {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-}
 
 
 
