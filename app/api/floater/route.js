@@ -1,7 +1,10 @@
 export async function POST(req) {
   const { tooltipText, iframeSrc, imageURL, labelTextColor } = await req.json();
 
-  const generateId = () => `btn-${Math.random().toString(36).substr(2, 9)}-${Date.now()}`;
+  generateId() {
+    return `btn-${Math.random().toString(36).substr(2, 9)}-${Date.now()}`;
+}
+
 
   const floaterScript = `
     class FloaterButton {
