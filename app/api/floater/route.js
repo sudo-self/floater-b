@@ -1,10 +1,10 @@
 export async function POST(req) {
   const { tooltipText, iframeSrc, imageURL, labelTextColor } = await req.json();
 
-  generateId() {
+  // Define generateId as a function
+  const generateId = () => {
     return `btn-${Math.random().toString(36).substr(2, 9)}-${Date.now()}`;
-}
-
+  };
 
   const floaterScript = `
     class FloaterButton {
@@ -215,10 +215,11 @@ export async function POST(req) {
         }
     }
 
-   document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
         new FloaterButton({
             tooltipText: '${tooltipText || 'Floater B.'}',
             iframeSrc: '${iframeSrc || 'https://floater.jessejesse.xyz'}',
+            imageURL: '${imageURL || ''}',
         });
     });
   `;
@@ -230,10 +231,6 @@ export async function POST(req) {
     },
   });
 }
-
-
-
-
 
 /*
  
