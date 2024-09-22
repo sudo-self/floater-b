@@ -8,7 +8,7 @@ export default function MatrixRain() {
     matrixContainer.classList.add('matrix-rain');
     document.querySelector('.matrix-rain-container').appendChild(matrixContainer);
 
-    const matrixCharacters = 'JJ';
+    const matrixCharacters = '🔘';
     const numColumns = Math.floor(window.innerWidth / 20);
 
    
