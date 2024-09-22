@@ -31,7 +31,7 @@ export default function ClientScriptComponent() {
       
       {/* Domain */}
       <Script
-        src="https://pub-c1de1cb456e74d6bbbee111ba9e6c757.r2.dev/domain.js"
+        src="https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/domain.js?alt=media&token=acfbbd8f-b231-4da6-be32-32147d8ad58f"
         strategy="lazyOnload"
       />
     </>
