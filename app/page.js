@@ -213,17 +213,24 @@ const Home = () => {
         </div>
       </main>
        <div className="flex justify-center mt-8">
-  <a
-            href="https://github.com/sudo-self/floater-b"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-gray-300 transition-colors duration-300"
-            data-icon="octicon-star" 
-            data-size="large" 
-            aria-label="Star sudo-self/floater-b on GitHub"
-       
-          >
-            <FaStar className="w-6 h-6" />
+<a
+  href="https://github.com/sudo-self/floater-b"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-gray-400 hover:text-gray-300 transition-colors duration-300"
+  data-icon="octicon-star" 
+  data-size="large" 
+  aria-label="Star sudo-self/floater-b on GitHub"
+>
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    class="w-6 h-6" 
+    fill="currentColor" 
+    viewBox="0 0 16 16" 
+    aria-hidden="true">
+    <path d="M8 0l2.48 5.04L16 5.76l-4 3.92.96 5.64L8 12.64 3.04 15.32l.96-5.64-4-3.92 5.52-.72L8 0z"></path>
+  </svg>
+</a>
        </div>
       <Footer />
     </div>
