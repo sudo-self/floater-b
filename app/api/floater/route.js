@@ -260,8 +260,7 @@ export async function GET(req) {
         schemaVersion: 1,
         label: 'API',
         message: '200/ok',
-        color: 'green',
-        color2: 'lightgrey',
+        color: 'blue',
     }), {
         headers: {
             'Content-Type': 'application/json',
