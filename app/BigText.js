@@ -24,7 +24,7 @@ function BigText({ slides }) {
     <div className='flex flex-col items-center text-6xl font-extrabold tracking-tight md:text-9xl'>
       <div className='flex flex-col items-center'>
       <Link href="/FloaterForm">
-        <p className='text-2xl tracking-normal sm:text-3xl'>&nbsp;&nbsp;&nbsp;&nbsp;(⌐■_■)_🟢&nbsp;&nbsp;</p>
+        <p className='text-2xl tracking-normal sm:text-3xl'>&nbsp;&nbsp;&nbsp;&nbsp;(⌐■_■)_🔘&nbsp;&nbsp;</p>
       </Link>
         {slides.map((text, index) => (
           <span key={text} className='relative block text-center'>
