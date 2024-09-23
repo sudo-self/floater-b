@@ -245,14 +245,8 @@ export async function POST(req) {
         labelTextColor,
     });
   
-    return new Response('Floater button created', {
+    return new Response('Floater.js created by Jesse Roper', {
         status: 201,
-    });
-}
-
-export async function GET() {
-    return new Response('Floater button service is running', {
-        status: 200,
     });
 }
 
