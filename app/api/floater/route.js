@@ -1,4 +1,3 @@
-
 class JesseRoperFloaterButton {
     constructor(options = {}) {
         this.buttonId = options.buttonId || 'JesseRoper-btn-floating-button';
@@ -11,6 +10,7 @@ class JesseRoperFloaterButton {
         this.popupClass = 'JesseRoper-btn-popup';
         this.closeButtonClass = 'JesseRoper-btn-close-button';
         this.tooltipClass = 'JesseRoper-btn-tooltip';
+        
         this.createStyles();
         this.createButton();
         this.createPopup();
