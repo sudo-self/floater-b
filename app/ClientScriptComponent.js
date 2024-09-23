@@ -28,12 +28,6 @@ export default function ClientScriptComponent() {
         src="https://pub-62f7f17b63fe4f5cbbf739cf66c0c5ee.r2.dev/graphics.js"
         strategy="lazyOnload"
       />
-      
-      {/* Domain */}
-      <Script
-        src="https://firebasestorage.googleapis.com/v0/b/jessejessexyz.appspot.com/o/domain.js?alt=media&token=acfbbd8f-b231-4da6-be32-32147d8ad58f"
-        strategy="lazyOnload"
-      />
     </>
   );
 }
