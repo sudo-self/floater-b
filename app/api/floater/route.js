@@ -1,4 +1,4 @@
-// route.js
+// Floater.js Api
 
 export async function POST(req) {
     const { tooltipText, iframeSrc, imageURL, labelTextColor } = await req.json();
