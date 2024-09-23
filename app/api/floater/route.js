@@ -254,17 +254,17 @@ export async function POST(req) {
     });
 }
 
-
 export async function GET(req) {
-    return new Response(JSON.stringify({
-        schemaVersion: 1,
-        label: 'API',
-        message: '200/ok',
-        color: 'blue',
-    }), {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+  return new Response(JSON.stringify({
+    schemaVersion: 1,
+    label: 'API',
+    message: '200/ok',
+    color: 'blue',
+  }), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 }
 
