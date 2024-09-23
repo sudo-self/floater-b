@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <div className="flex flex-col items-center mx-auto my-16 text-center">
       <p className="text-quaternary">
-        🟢&nbsp;&nbsp;&nbsp;
+        &#10085;&nbsp;
         <a
           className="ml-1 text-secondary text-green-600 hover:text-primary group"
           href="https://floater.jessejesse.xyz/FloaterForm"
