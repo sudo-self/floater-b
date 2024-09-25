@@ -22,6 +22,12 @@ export default function ClientScriptComponent() {
         src="https://pub-c1de1cb456e74d6bbbee111ba9e6c757.r2.dev/sudo-self-vp.js"
         strategy="lazyOnload"
       />
+
+       {/* ToolsV2 base 64 image */}
+      <Script
+        src="https://server.jessejesse.workers.dev/floater-2.js"
+        strategy="lazyOnload"
+      />          
       
       {/* Graphics Engineer */}
       <Script
@@ -31,3 +37,9 @@ export default function ClientScriptComponent() {
     </>
   );
 }
+
+
+
+
+
+
